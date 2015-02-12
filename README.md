@@ -1,6 +1,6 @@
 ## Supported tags and respective `Dockerfile` links
 
-+ `0.1.14` 
++ `0.1.14` (ember-cli 0.1.14)
 
 ## Inspiration
 This image is based on the image: geoffreyd/ember-cli
