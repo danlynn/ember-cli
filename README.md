@@ -17,7 +17,7 @@ ember-cli | 0.1.15
 
 ## How to use - Easy Way
 
-Clone the [ember-cli-docker-template](https://github.com/danlynn/ember-cli-docker-template) project from github which already has everything all setup to start using this image.  It also conveniently sets up aliases for the ember, bower, and npm commands so that you don't need to type `fig run --rm <command>`.  Instead, you can simply type the command just as if it was running locally instead of in a docker container.
+Clone the [ember-cli-docker-template](https://github.com/danlynn/ember-cli-docker-template) project from github which already has everything all setup to start using this image.  It also conveniently sets up aliases for the ember, bower, and npm commands so that you don't need to type `docker-compose run --rm <command>`.  Instead, you can simply type the command just as if it was running locally instead of in a docker container.
 
 ## How to use - Hard Way
 
@@ -77,13 +77,13 @@ The harder way is to manually setup a project to use this container via [docker-
 
 ## Command Usage
 
-The ember, bower, and npm commands can be executed in the container to effect changes to your local project dir as follows.  You basically put a "fig run --rm" in front of any of the 3 commands and pass the normal command options as usual.
+The ember, bower, and npm commands can be executed in the container to effect changes to your local project dir as follows.  You basically put a "docker-compose run --rm" in front of any of the 3 commands and pass the normal command options as usual.
 
 Example:
 
 ```
-fig run --rm npm install
-fig run --rm bower install bootstrap
-fig run --rm ember generate model user
+docker-compose run --rm npm install
+docker-compose run --rm bower install bootstrap
+docker-compose run --rm ember generate model user
 ```
 
