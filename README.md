@@ -4,7 +4,15 @@
 
 This image is based on: [geoffreyd/ember-cli](https://registry.hub.docker.com/u/geoffreyd/ember-cli/)
 
-This image contains a node and npm, bower, and of course ember-cli.  The container's working dir is /myapp so that you can setup a volume mapping your project dir to /myapp in the container.
+This image contains node, npm, bower, phantomjs, and of course ember-cli.  The container's working dir is /myapp so that you can setup a volume mapping your project dir to /myapp in the container.
+
+package   | version
+-------   | -------
+node      | 0.10.36
+npm       | 2.5.0
+bower     | 1.3.12
+phantomjs | 1.9.15
+ember-cli | 0.1.15
 
 
 ## How to use - Easy Way
@@ -13,24 +21,24 @@ Clone the [ember-cli-docker-template](https://github.com/danlynn/ember-cli-docke
 
 ## How to use - Hard Way
 
-The harder way is to manually setup a project to use this container via [fig](http://www.fig.sh).
+The harder way is to manually setup a project to use this container via [docker-compose](http://www.fig.sh).
 
-1. Create new project dir and add a fig.yml file similar the following:
-   
+1. Create new project dir and add a docker-compose.yml file similar the following:
+
    ```
    ember: &defaults
      image: danlynn/ember-cli:0.1.15
      volumes:
        - .:/myapp
-   
+
    npm:
      <<: *defaults
      entrypoint: ['/usr/local/bin/npm']
-   
+
    bower:
      <<: *defaults
      entrypoint: ['/usr/local/bin/bower', '--allow-root']
-   
+
    server:
      <<: *defaults
      command: server --watcher polling
@@ -38,33 +46,33 @@ The harder way is to manually setup a project to use this container via [fig](ht
        - "4200:4200"
        - "35729:35729"
    ```
-   
+
 2. Create an ember app in the current dir:
 
 	```
-	fig run --rm ember init
+	docker-compose run --rm ember init
 	```
-   
+
 3. Start the ember server:
-   
+
    ```
-   $ fig up server
+   $ docker-compose up server
    ```
-   
+
    This launches the ember-cli server on port 4200 in the docker container. As you make changes to the ember webapp files, they will automagically be detected and the associated files will be recompiled and the browser will auto-reload showing the changes.
 
 4. Launch the ember webapp:
-   
+
    You will need to first determine the IP of the docker container:
-   
+
    ```
    $ boot2docker ip
-   
+
    192.168.59.103
    ```
-   
+
    Next open that ip address in your browser on port 4200:
-   
+
    + http://192.168.59.103:4200
 
 ## Command Usage
