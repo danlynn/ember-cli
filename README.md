@@ -1,19 +1,12 @@
 ## Supported tags and respective `Dockerfile` links
 
-+ [`0.1.15`,`latest` (0.1.15/Dockerfile)](https://github.com/danlynn/ember-cli/blob/master/Dockerfile)
++ [`0.2.0-beta.1`,`latest` (0.2.0-beta.1/Dockerfile)](https://github.com/danlynn/ember-cli/blob/master/Dockerfile)
 
 This image is based on: [geoffreyd/ember-cli](https://registry.hub.docker.com/u/geoffreyd/ember-cli/)
 
-This image contains node, npm, bower, phantomjs, and of course ember-cli.  The container's working dir is /myapp so that you can setup a volume mapping your project dir to /myapp in the container.
+This image contains everything you need to have a working development environment for ember-cli.  The container's working dir is /myapp so that you can setup a volume mapping your project dir to /myapp in the container.
 
-package   | version
--------   | -------
-node      | 0.10.36
-npm       | 2.5.0
-bower     | 1.3.12
-phantomjs | 1.9.15
-ember-cli | 0.1.15
-
+ember-cli v0.2.0-beta.1 + node 0.10.36 + npm 2.5.0 + bower 1.3.12 + phantomjs 1.9.15
 
 ## How to use - Easy Way
 
@@ -27,7 +20,7 @@ The harder way is to manually setup a project to use this container via [docker-
 
    ```
    ember: &defaults
-     image: danlynn/ember-cli:0.1.15
+     image: danlynn/ember-cli:0.2.0-beta.1
      volumes:
        - .:/myapp
 
@@ -66,6 +59,8 @@ The harder way is to manually setup a project to use this container via [docker-
    You will need to first determine the IP of the docker container:
 
    ```
+   $ docker-machine ip
+   -or-
    $ boot2docker ip
 
    192.168.59.103
