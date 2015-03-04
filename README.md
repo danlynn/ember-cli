@@ -1,6 +1,8 @@
 ## Supported tags and respective `Dockerfile` links
 
-+ [`0.2.0-beta.1`,`latest` (0.2.0-beta.1/Dockerfile)](https://github.com/danlynn/ember-cli/blob/master/Dockerfile)
++ [`0.2.0-beta.1`,`latest` (0.2.0-beta.1/Dockerfile)](https://github.com/danlynn/ember-cli/blob/0.2.0-beta.1/Dockerfile)
++ [`0.1.15` (0.1.15/Dockerfile)](https://github.com/danlynn/ember-cli/blob/0.1.15/Dockerfile)
+
 
 This image is based on: [geoffreyd/ember-cli](https://registry.hub.docker.com/u/geoffreyd/ember-cli/)
 
