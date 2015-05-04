@@ -1,8 +1,9 @@
-FROM node:0.10.36
+FROM node:0.12.01
 MAINTAINER Dan Lynn <docker@danlynn.org>
 
-# Note: npm is v2.5.0
-RUN npm install -g ember-cli@0.2.0-beta.1 bower@1.3.12 phantomjs@1.9.15
+# Note: npm is v2.6.x ?
+# TODO: install watchman?
+RUN npm install -g ember-cli@0.2.3 bower@1.4.1 phantomjs@1.9.16
 
 EXPOSE 4200 35729
 WORKDIR /myapp
