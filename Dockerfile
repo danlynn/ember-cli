@@ -1,4 +1,4 @@
-FROM node:0.12.01
+FROM node:0.12.2
 MAINTAINER Dan Lynn <docker@danlynn.org>
 
 # Note: npm is v2.6.x ?
