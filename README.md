@@ -1,7 +1,7 @@
 ## Supported tags and respective `Dockerfile` links
 
 + [`0.2.3`,`latest` (0.2.3/Dockerfile)](https://github.com/danlynn/ember-cli/blob/0.2.3/Dockerfile)
-+ [`0.2.0-beta.1`,`latest` (0.2.0-beta.1/Dockerfile)](https://github.com/danlynn/ember-cli/blob/0.2.0-beta.1/Dockerfile)
++ [`0.2.0-beta.1` (0.2.0-beta.1/Dockerfile)](https://github.com/danlynn/ember-cli/blob/0.2.0-beta.1/Dockerfile)
 + [`0.1.15` (0.1.15/Dockerfile)](https://github.com/danlynn/ember-cli/blob/0.1.15/Dockerfile)
 
 
@@ -9,7 +9,7 @@ This image is based on: [geoffreyd/ember-cli](https://registry.hub.docker.com/u/
 
 This image contains everything you need to have a working development environment for ember-cli.  The container's working dir is /myapp so that you can setup a volume mapping your project dir to /myapp in the container.
 
-ember-cli v0.2.3 + node 0.12.2 + npm 2.6 + bower 1.4.1 + phantomjs 1.9.16
+ember-cli v0.2.3 + node 0.12.2 + npm 2.7.6 + bower 1.4.1 + phantomjs 1.9.16
 
 ## How to use - Easy Way
 
@@ -19,7 +19,7 @@ Clone the [ember-cli-docker-template](https://github.com/danlynn/ember-cli-docke
 
 The harder way is to manually setup a project to use this container via [docker-compose](http://www.fig.sh).
 
-1. Create new project dir and add a docker-compose.yml file similar the following:
+1. Create new project dir and add a docker-compose.yml file similar to the following:
 
    ```
    ember: &defaults
