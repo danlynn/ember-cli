@@ -1,10 +1,10 @@
-FROM node:0.12.2
+FROM node:4.2.3
 MAINTAINER Dan Lynn <docker@danlynn.org>
 
-# Note: npm is v2.11.0
-RUN npm install -g ember-cli@1.13.8
-RUN npm install -g bower@1.4.1
-RUN npm install -g phantomjs@1.9.18
+# Note: npm is v2.14.7
+RUN npm install -g ember-cli@1.13.13
+RUN npm install -g bower@1.7.1
+RUN npm install -g phantomjs@1.9.19
 
 # install watchman
 RUN \
