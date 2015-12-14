@@ -25,7 +25,7 @@ The harder way is to manually setup a project to use this container via [docker-
 
    ```
    ember: &defaults
-     image: danlynn/ember-cli:0.2.7
+     image: danlynn/ember-cli:1.13.8
      volumes:
        - .:/myapp
 
