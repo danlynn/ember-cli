@@ -13,7 +13,7 @@ This image was originally based on: [geoffreyd/ember-cli](https://registry.hub.d
 
 This image contains everything you need to have a working development environment for ember-cli.  The container's working dir is /myapp so that you can setup a volume mapping your project dir to /myapp in the container.
 
-ember-cli v1.13.13 + node 4.2.3 + npm 2.14.7 + bower 1.7.1 + phantomjs 1.9.19 + watchman 3.5.0
+ember-cli v1.13.14 + node 4.2.3 + npm 2.14.7 + bower 1.7.1 + phantomjs 1.9.19 + watchman 3.5.0
 
 ## How to use - Easy Way
 
@@ -27,7 +27,7 @@ The harder way is to manually setup a project to use this container via [docker-
 
    ```
    ember: &defaults
-     image: danlynn/ember-cli:1.13.13
+     image: danlynn/ember-cli:1.13.14
      volumes:
        - .:/myapp
 
@@ -74,7 +74,7 @@ The harder way is to manually setup a project to use this container via [docker-
    Then watchman is running out of resources trying to track all the files in a large ember app.  To increase the `fs.inotify.max_user_watches` count to something that is more appropriate for an ember app, stop your docker-compose server by hitting ctrl-c (or `docker-compose stop server` if necessary) then execute the following command:
    
    ```
-   $ docker run --rm --privileged --entrypoint sysctl danlynn/ember-cli:1.13.13 -w fs.inotify.max_user_watches=524288
+   $ docker run --rm --privileged --entrypoint sysctl danlynn/ember-cli:1.13.14 -w fs.inotify.max_user_watches=524288
    ```
    
    Note that this will affect all containers that run on the current docker-machine from this point forward because `fs.inotify.max_user_watches` is a system-wide setting.  This shouldn't be a big deal however, so go ahead and give it a try.  Then start the docker-compose service again with
