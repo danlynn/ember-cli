@@ -16,7 +16,7 @@ This image contains everything you need to have a working development environmen
 
 ember-cli v1.13.15 + node 4.2.3 + npm 2.14.7 + bower 1.7.1 + phantomjs 1.9.19 + watchman 3.5.0
 
-![ember-cli logo](https://github.com/danlynn/ember-cli/blob/master/logo.png)
+![ember-cli logo](https://raw.githubusercontent.com/danlynn/ember-cli/master/logo.png)
 
 ## How to use - Easy Way
 
