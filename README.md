@@ -16,6 +16,8 @@ This image contains everything you need to have a working development environmen
 
 ember-cli v1.13.15 + node 4.2.3 + npm 2.14.7 + bower 1.7.1 + phantomjs 1.9.19 + watchman 3.5.0
 
+![ember-cli logo](https://github.com/danlynn/ember-cli/blob/master/logo.png)
+
 ## How to use - Easy Way
 
 Clone the [ember-cli-docker-template](https://github.com/danlynn/ember-cli-docker-template) project from github which already has everything all setup to start using this image.  It also conveniently sets up aliases for the ember, bower, and npm commands so that you don't need to type `docker-compose run --rm <command>`.  Instead, you can simply type the command just as if it was running locally instead of in a docker container.
