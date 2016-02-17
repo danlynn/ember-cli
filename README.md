@@ -1,6 +1,7 @@
 ## Supported tags and respective `Dockerfile` links
 
-+ [`1.13.15`,`latest` (1.13.15/Dockerfile)](https://github.com/danlynn/ember-cli/blob/1.13.15/Dockerfile)
++ [`2.3.0`,`latest` (2.3.0/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.3.0/Dockerfile)
++ [`1.13.15` (1.13.15/Dockerfile)](https://github.com/danlynn/ember-cli/blob/1.13.15/Dockerfile)
 + [`1.13.14` (1.13.14/Dockerfile)](https://github.com/danlynn/ember-cli/blob/1.13.14/Dockerfile)
 + [`1.13.13` (1.13.13/Dockerfile)](https://github.com/danlynn/ember-cli/blob/1.13.13/Dockerfile)
 + [`1.13.8` (1.13.8/Dockerfile)](https://github.com/danlynn/ember-cli/blob/1.13.8/Dockerfile)
@@ -15,23 +16,20 @@ This image was originally based on: [geoffreyd/ember-cli](https://registry.hub.d
 
 This image contains everything you need to have a working development environment for ember-cli.  The container's working dir is /myapp so that you can setup a volume mapping your project dir to /myapp in the container.
 
-ember-cli v1.13.15 + node 4.2.3 + npm 2.14.10 + bower 1.7.1 + phantomjs 1.9.19 + watchman 3.5.0
+ember-cli v2.3.0 + node 4.2.3 + npm 2.14.10 + bower 1.7.1 + phantomjs 1.9.19 + watchman 3.5.0
 
 ![ember-cli logo](https://raw.githubusercontent.com/danlynn/ember-cli/master/logo.png)
 
-## How to use - Easy Way
 
-Clone the [ember-cli-docker-template](https://github.com/danlynn/ember-cli-docker-template) project from github which already has everything all setup to start using this image.  It also conveniently sets up aliases for the ember, bower, and npm commands so that you don't need to type `docker-compose run --rm <command>`.  Instead, you can simply type the command just as if it was running locally instead of in a docker container.
+## How to use
 
-## How to use - Hard Way
-
-The harder way is to manually setup a project to use this container via [docker-compose](http://www.fig.sh).
+Setup a project to use this container via [docker-compose](https://www.docker.com/products/docker-compose).  docker-compose is part of the all-in-one [docker-toolbox](https://www.docker.com/products/overview#/docker_toolbox) which is the easiest way to get up and running with docker.
 
 1. Create new project dir and add a docker-compose.yml file similar to the following:
 
    ```
    ember: &defaults
-     image: danlynn/ember-cli:1.13.15
+     image: danlynn/ember-cli:2.3.0
      volumes:
        - .:/myapp
 
@@ -51,10 +49,22 @@ The harder way is to manually setup a project to use this container via [docker-
        - "35729:35729"
    ```
 
+2. Make sure that your docker-machine is already running:
+
+	```
+	$ docker-machine start default
+	```
+	
+	Or, if you haven't created one yet:
+	
+	```
+	$ docker-machine create --driver virtualbox default
+	```
+
 2. Create an ember app in the current dir:
 
 	```
-	docker-compose run --rm ember init
+	$ docker-compose run --rm ember init
 	```
 
 3. Start the ember server:
@@ -78,7 +88,7 @@ The harder way is to manually setup a project to use this container via [docker-
    Then watchman is running out of resources trying to track all the files in a large ember app.  To increase the `fs.inotify.max_user_watches` count to something that is more appropriate for an ember app, stop your docker-compose server by hitting ctrl-c (or `docker-compose stop server` if necessary) then execute the following command:
    
    ```
-   $ docker run --rm --privileged --entrypoint sysctl danlynn/ember-cli:1.13.15 -w fs.inotify.max_user_watches=524288
+   $ docker run --rm --privileged --entrypoint sysctl danlynn/ember-cli:2.3.0 -w fs.inotify.max_user_watches=524288
    ```
    
    Note that this will affect all containers that run on the current docker-machine from this point forward because `fs.inotify.max_user_watches` is a system-wide setting.  This shouldn't be a big deal however, so go ahead and give it a try.  Then start the docker-compose service again with
@@ -92,7 +102,7 @@ The harder way is to manually setup a project to use this container via [docker-
    You will need to first determine the IP of the docker container:
 
    ```
-   $ docker-machine ip
+   $ docker-machine ip default
    -or-
    $ boot2docker ip
 
@@ -110,8 +120,8 @@ The ember, bower, and npm commands can be executed in the container to effect ch
 Example:
 
 ```
-docker-compose run --rm npm install
-docker-compose run --rm bower install bootstrap
-docker-compose run --rm ember generate model user
+$ docker-compose run --rm npm install
+$ docker-compose run --rm bower install bootstrap
+$ docker-compose run --rm ember generate model user
 ```
 
