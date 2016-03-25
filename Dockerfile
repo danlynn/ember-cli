@@ -8,9 +8,9 @@ WORKDIR /myapp
 ENTRYPOINT ["/usr/local/bin/ember"]
 CMD ["server"]
 
-# Note: npm is v2.14.10
+# Note: npm is v2.14.7
 RUN \
-	npm install -g ember-cli@2.3.0 &&\
+	npm install -g ember-cli@2.4.2 &&\
 	npm install -g bower@1.7.1 &&\
 	npm install -g phantomjs@1.9.19
 
