@@ -8,8 +8,6 @@
 + [`1.13.1` (1.13.1/Dockerfile)](https://github.com/danlynn/ember-cli/blob/1.13.1/Dockerfile)
 + [`0.2.7` (0.2.7/Dockerfile)](https://github.com/danlynn/ember-cli/blob/0.2.7/Dockerfile)
 + [`0.2.3` (0.2.3/Dockerfile)](https://github.com/danlynn/ember-cli/blob/0.2.3/Dockerfile)
-+ [`0.2.0-beta.1` (0.2.0-beta.1/Dockerfile)](https://github.com/danlynn/ember-cli/blob/0.2.0-beta.1/Dockerfile)
-+ [`0.1.15` (0.1.15/Dockerfile)](https://github.com/danlynn/ember-cli/blob/0.1.15/Dockerfile)
 
 
 This image was originally based on: [geoffreyd/ember-cli](https://registry.hub.docker.com/u/geoffreyd/ember-cli/) (hat tip)
