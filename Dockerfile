@@ -10,7 +10,7 @@ CMD ["server"]
 
 # Note: npm is v2.14.7
 RUN \
-	npm install -g ember-cli@2.5.1 &&\
+	npm install -g ember-cli@2.6.1 &&\
 	npm install -g bower@1.7.1 &&\
 	npm install -g phantomjs@1.9.19
 
