@@ -10,9 +10,9 @@ CMD ["server"]
 
 # Note: npm is v2.14.7
 RUN \
-	npm install -g ember-cli@2.6.2 &&\
-	npm install -g bower@1.7.1 &&\
-	npm install -g phantomjs@1.9.19
+	npm install -g ember-cli@2.6.3 &&\
+	npm install -g bower@1.7.9 &&\
+	npm install -g phantomjs@2.1.7
 
 # install watchman
 RUN \
