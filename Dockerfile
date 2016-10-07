@@ -1,7 +1,9 @@
 FROM node:4.2.3
 MAINTAINER Dan Lynn <docker@danlynn.org>
 
-EXPOSE 4200 35729
+# ember server on port 4200
+# livereload server on port 49152
+EXPOSE 4200 49152
 WORKDIR /myapp
 
 # run ember server on container start
@@ -10,7 +12,7 @@ CMD ["server"]
 
 # Note: npm is v2.14.7
 RUN \
-	npm install -g ember-cli@2.7.0 &&\
+	npm install -g ember-cli@2.8.0 &&\
 	npm install -g bower@1.7.9 &&\
 	npm install -g phantomjs@2.1.7
 
