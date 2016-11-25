@@ -1,4 +1,4 @@
-FROM node:4.2.3
+FROM node:4.6.2
 MAINTAINER Dan Lynn <docker@danlynn.org>
 
 # ember server on port 4200
@@ -13,7 +13,7 @@ CMD ["server"]
 # Note: npm is v2.14.7
 RUN \
 	npm install -g ember-cli@2.9.1 &&\
-	npm install -g bower@1.7.9 &&\
+	npm install -g bower@1.8.0 &&\
 	npm install -g phantomjs@2.1.7
 
 # install watchman
