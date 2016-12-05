@@ -7,12 +7,11 @@ EXPOSE 4200 49152
 WORKDIR /myapp
 
 # run ember server on container start
-ENTRYPOINT ["/usr/local/bin/ember"]
-CMD ["server"]
+CMD ["ember", "server"]
 
-# Note: npm is v2.14.7
+# Note: npm is v2.15.11
 RUN \
-	npm install -g ember-cli@2.9.1 &&\
+	npm install -g ember-cli@2.10.0 &&\
 	npm install -g bower@1.8.0 &&\
 	npm install -g phantomjs@2.1.7
 
