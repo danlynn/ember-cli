@@ -1,4 +1,4 @@
-FROM node:4.6.2
+FROM node:6.9.1
 MAINTAINER Dan Lynn <docker@danlynn.org>
 
 # ember server on port 4200
@@ -9,7 +9,7 @@ WORKDIR /myapp
 # run ember server on container start
 CMD ["ember", "server"]
 
-# Note: npm is v2.15.11
+# Note: npm is v3.10.8
 RUN \
 	npm install -g ember-cli@2.10.0 &&\
 	npm install -g bower@1.8.0 &&\
