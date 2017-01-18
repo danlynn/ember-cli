@@ -31,46 +31,30 @@ ember-cli 2.10.0 + node 4.6.2 + npm 2.15.11 + bower 1.8.0 + phantomjs 2.1.7 + wa
 
 ## Important Change in ember-cli:2.10.0
 
-As of ember-cli:2.10.0, this image has changed its `ENTRYPOINT` to the docker convention of `/bin/sh -c`.  This means that if you have any shell scripts which assume the previous `ENTRYPOINT` of `/usr/local/bin/ember` then you will need to update them.  The default CMD is now `ember server` which means that the syntax for launching the server is unchanged.
+As of ember-cli:2.10.0, this image has changed its `ENTRYPOINT` to the docker convention of `/bin/sh -c`.  This means that if you have any shell scripts which assume the previous `ENTRYPOINT` of `/usr/local/bin/ember` then you will need to update them.  The default CMD is now `ember server` which means that the syntax for most critical action of launching the server is unchanged.  However, other actions may need to be updated.
 
-### Old Way
+### Example Changes To Common Actions
 
-Launch ember server (old way):
-
-```
-$ docker run -ti --rm -v $(pwd):/myapp -p 4200:4200 danlynn/ember-cli:2.10.0
-```
-
-Run ember tests (old way):
+Launch ember server (unchanged):
 
 ```
-$ docker run -ti --rm -v $(pwd):/myapp danlynn/ember-cli:2.10.0 test
-```
-
-Launch bash shell (old way):
+OLD: $ docker run -ti --rm -v $(pwd):/myapp -p 4200:4200 danlynn/ember-cli:2.10.0
+NEW: $ docker run -ti --rm -v $(pwd):/myapp -p 4200:4200 danlynn/ember-cli:2.10.0
 
 ```
-$ docker run -ti --rm -v $(pwd):/myapp --entrypoint=/bin/bash danlynn/ember-cli:2.10.0
-```
 
-### New Way
-
-Launch ember server (new way - unchanged):
+Run ember tests:
 
 ```
-$ docker run -ti --rm -v $(pwd):/myapp -p 4200:4200 danlynn/ember-cli:2.10.0
+OLD: $ docker run -ti --rm -v $(pwd):/myapp danlynn/ember-cli:2.10.0 test
+NEW: $ docker run -ti --rm -v $(pwd):/myapp danlynn/ember-cli:2.10.0 ember test
 ```
 
-Run ember tests (new way):
+Launch bash shell:
 
 ```
-$ docker run -ti --rm -v $(pwd):/myapp danlynn/ember-cli:2.10.0 ember test
-```
-
-Launch bash shell (new way):
-
-```
-$ docker run -ti --rm -v $(pwd):/myapp danlynn/ember-cli:2.10.0 bash
+OLD: $ docker run -ti --rm -v $(pwd):/myapp --entrypoint=/bin/bash danlynn/ember-cli:2.10.0
+NEW: $ docker run -ti --rm -v $(pwd):/myapp danlynn/ember-cli:2.10.0 bash
 ```
 
 
