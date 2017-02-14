@@ -29,7 +29,7 @@ This image was originally based on: [geoffreyd/ember-cli](https://registry.hub.d
 
 This image contains everything you need to have a working development environment for ember-cli.  The container's working dir is /myapp so that you can setup a volume mapping your project dir to /myapp in the container.
 
-ember-cli 2.11.0 + node 6.9.4 + npm 3.10.10 + bower 1.8.0 + phantomjs 2.1.7 + watchman 3.5.0
+ember-cli 2.11.0 + node 4.6.2/6.9.4 + npm 2.15.11/3.10.10 + bower 1.8.0 + phantomjs 2.1.7 + watchman 3.5.0
 
 ![ember-cli logo](https://raw.githubusercontent.com/danlynn/ember-cli/master/logo.png)
 
