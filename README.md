@@ -1,7 +1,7 @@
 ## Supported tags and respective `Dockerfile` links
 
 + [`2.11.1`,`latest` (2.11.1/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.11.1/Dockerfile)
-+ [`2.11.1-node_6.9` (2.11.1-node_6.9/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.11.1-node_6.9/Dockerfile)
++ [`2.11.1-node_6.10` (2.11.1-node_6.10/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.11.1-node_6.10/Dockerfile)
 + [`2.11.0` (2.11.0/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.11.0/Dockerfile)
 + [`2.11.0-node_6.9` (2.11.0-node_6.9/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.11.0-node_6.9/Dockerfile)
 + [`2.10.1` (2.10.1/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.10.1/Dockerfile)
@@ -31,7 +31,7 @@ This image was originally based on: [geoffreyd/ember-cli](https://registry.hub.d
 
 This image contains everything you need to have a working development environment for ember-cli.  The container's working dir is /myapp so that you can setup a volume mapping your project dir to /myapp in the container.
 
-ember-cli 2.11.1 + node 4.6.2/6.9.4 + npm 2.15.11/3.10.10 + bower 1.8.0 + phantomjs 2.1.7 + watchman 3.5.0
+ember-cli 2.11.1 + node 4.6.2/6.10.0 + npm 2.15.11/3.10.10 + bower 1.8.0 + phantomjs 2.1.7 + watchman 3.5.0
 
 ![ember-cli logo](https://raw.githubusercontent.com/danlynn/ember-cli/master/logo.png)
 
