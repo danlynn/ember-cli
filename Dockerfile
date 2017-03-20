@@ -1,4 +1,4 @@
-FROM node:4.6.2
+FROM node:4.8.0
 MAINTAINER Dan Lynn <docker@danlynn.org>
 
 # ember server on port 4200
@@ -11,7 +11,7 @@ CMD ["ember", "server"]
 
 # Note: npm is v2.15.11
 RUN \
-	npm install -g ember-cli@2.11.1 &&\
+	npm install -g ember-cli@2.12.0 &&\
 	npm install -g bower@1.8.0 &&\
 	npm install -g phantomjs@2.1.7
 
