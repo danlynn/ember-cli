@@ -9,12 +9,6 @@ WORKDIR /myapp
 # run ember server on container start
 CMD ["ember", "server"]
 
-# Note: npm is v2.15.11
-RUN \
-	npm install -g ember-cli@2.12.2 &&\
-	npm install -g bower@1.8.0 &&\
-	npm install -g phantomjs@2.1.7
-
 # install watchman
 # Note: See the README.md to find out how to increase the
 # fs.inotify.max_user_watches value so that watchman will 
@@ -27,3 +21,13 @@ RUN \
 	./configure &&\
 	make &&\
 	make install
+
+# Install ember dev dependencies
+RUN \
+	npm install -g bower@1.8.0 &&\
+	npm install -g phantomjs@2.1.7
+
+# Install ember-cli
+RUN \
+	npm install -g ember-cli@2.13.1
+
