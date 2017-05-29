@@ -2,7 +2,7 @@ FROM node:4.8.2
 MAINTAINER Dan Lynn <docker@danlynn.org>
 
 # ember server on port 4200
-# livereload server on port 49153 (changed in 2.11.1 from 49152)
+# livereload server on port 49153 (changed in v2.11.1 from 49152)
 EXPOSE 4200 49153
 WORKDIR /myapp
 
@@ -29,5 +29,5 @@ RUN \
 
 # Install ember-cli
 RUN \
-	npm install -g ember-cli@2.13.1
+	npm install -g ember-cli@2.13.2
 

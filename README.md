@@ -1,6 +1,12 @@
-## Supported tags and respective `Dockerfile` links
+This image contains everything you need to have a working development environment for ember-cli.  The container's working dir is /myapp so that you can setup a volume mapping your project dir to /myapp in the container.
 
-+ [`2.13.1`,`latest` (2.13.1/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.13.1/Dockerfile)
+[![Docker Hub](http://dockeri.co/image/danlynn/ember-cli "Docker Hub")](https://hub.docker.com/r/danlynn/ember-cli/)
+
+### Supported tags and respective `Dockerfile` links
+
++ [`2.13.2`,`latest` (2.13.2/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.13.2/Dockerfile)
++ [`2.13.2-node_6.10` (2.13.2-node_6.10/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.13.2-node_6.10/Dockerfile)
++ [`2.13.1` (2.13.1/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.13.1/Dockerfile)
 + [`2.13.1-node_6.10` (2.13.1-node_6.10/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.13.1-node_6.10/Dockerfile)
 + [`2.12.2` (2.12.2/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.12.2/Dockerfile)
 + [`2.12.2-node_6.10` (2.12.2-node_6.10/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.12.2-node_6.10/Dockerfile)
@@ -37,27 +43,25 @@
 
 This image was originally based on: [geoffreyd/ember-cli](https://registry.hub.docker.com/u/geoffreyd/ember-cli/) (hat tip)
 
-This image contains everything you need to have a working development environment for ember-cli.  The container's working dir is /myapp so that you can setup a volume mapping your project dir to /myapp in the container.
-
-`ember-cli 2.13.1 + node 4.8.2/6.10.2 + npm 2.15.11/3.10.10 + bower 1.8.0 + phantomjs 2.1.7 + watchman 3.5.0`
+`ember-cli 2.13.2 + node 4.8.2/6.10.2 + npm 2.15.11/3.10.10 + bower 1.8.0 + phantomjs 2.1.7 + watchman 3.5.0`
 
 ![ember-cli logo](https://raw.githubusercontent.com/danlynn/ember-cli/master/logo.png)
 
-## Important Change in ember-cli:2.11.1
+### Important Change in ember-cli:2.11.1
 
 As of ember-cli:2.11.1, ember-cli livereload listens on port 49153 by default insteadof 49152.  Dockerfile now exposes 49153.
 
-## Important Change in ember-cli:2.10.0
+### Important Change in ember-cli:2.10.0
 
 As of ember-cli:2.10.0, this image has changed its `ENTRYPOINT` to the docker convention of `/bin/sh -c`.  This means that if you have any shell scripts which assume the previous `ENTRYPOINT` of `/usr/local/bin/ember` then you will need to update them.  The default CMD is now `ember server` which means that the syntax for most critical action of launching the server is unchanged.  However, other actions may need to be updated.
 
-### Example Changes To Common Actions
+#### Example Changes To Common Actions
 
 Launch ember server (unchanged):
 
 ```
 OLD: $ docker run -ti --rm -v $(pwd):/myapp -p 4200:4200 -p 49153:49153 danlynn/ember-cli:2.9.1
-NEW: $ docker run -ti --rm -v $(pwd):/myapp -p 4200:4200 -p 49153:49153 danlynn/ember-cli:2.13.1
+NEW: $ docker run -ti --rm -v $(pwd):/myapp -p 4200:4200 -p 49153:49153 danlynn/ember-cli:2.13.2
 
 ```
 
@@ -65,18 +69,18 @@ Run ember tests:
 
 ```
 OLD: $ docker run -ti --rm -v $(pwd):/myapp danlynn/ember-cli:2.9.1 test
-NEW: $ docker run -ti --rm -v $(pwd):/myapp danlynn/ember-cli:2.13.1 ember test
+NEW: $ docker run -ti --rm -v $(pwd):/myapp danlynn/ember-cli:2.13.2 ember test
 ```
 
 Launch bash shell:
 
 ```
 OLD: $ docker run -ti --rm -v $(pwd):/myapp --entrypoint=/bin/bash danlynn/ember-cli:2.9.1
-NEW: $ docker run -ti --rm -v $(pwd):/myapp danlynn/ember-cli:2.13.1 bash
+NEW: $ docker run -ti --rm -v $(pwd):/myapp danlynn/ember-cli:2.13.2 bash
 ```
 
 
-## How to use
+### How to use
 
 Setup a project to use this container via [docker-compose](https://www.docker.com/products/docker-compose).  docker-compose is part of the all-in-one [docker-toolbox](https://www.docker.com/products/overview#/docker_toolbox) which is the easiest way to get up and running with docker.
 
@@ -84,7 +88,7 @@ Setup a project to use this container via [docker-compose](https://www.docker.co
 
    ```
    ember: &defaults
-     image: danlynn/ember-cli:2.13.1
+     image: danlynn/ember-cli:2.13.2
      volumes:
        - .:/myapp
 
@@ -143,7 +147,7 @@ Setup a project to use this container via [docker-compose](https://www.docker.co
    Then watchman is running out of resources trying to track all the files in a large ember app.  To increase the `fs.inotify.max_user_watches` count to something that is more appropriate for an ember app, stop your docker-compose server by hitting ctrl-c (or `docker-compose stop server` if necessary) then execute the following command:
    
    ```
-   $ docker run --rm --privileged danlynn/ember-cli:2.13.1 sysctl -w fs.inotify.max_user_watches=524288
+   $ docker run --rm --privileged danlynn/ember-cli:2.13.2 sysctl -w fs.inotify.max_user_watches=524288
    ```
    
    Note that this will affect all containers that run on the current docker-machine from this point forward because `fs.inotify.max_user_watches` is a system-wide setting.  This shouldn't be a big deal however, so go ahead and give it a try.  Then start the docker-compose service again with
@@ -168,7 +172,7 @@ Setup a project to use this container via [docker-compose](https://www.docker.co
 
    + http://192.168.59.103:4200
 
-## Command Usage for `docker-compose`
+### Command Usage for `docker-compose`
 
 The ember, bower, and npm commands can be executed in the container to effect changes to your local project dir as follows.  You basically put a "docker-compose run --rm" in front of any of the 3 commands and pass the normal command options as usual.
 
@@ -180,17 +184,17 @@ $ docker-compose run --rm bower install bootstrap
 $ docker-compose run --rm ember generate model user
 ```
 
-## Command Usage for `docker run`
+### Command Usage for `docker run`
 
-Basically put `docker run -ti -v $(pwd):/myapp danlynn/ember-cli:2.13.1` before any command you run.
+Basically put `docker run -ti -v $(pwd):/myapp danlynn/ember-cli:2.13.2` before any command you run.
 
 Example:
 
 ```
-$ docker run -ti -v $(pwd):/myapp danlynn/ember-cli:2.13.1 npm install
-$ docker run -ti -v $(pwd):/myapp danlynn/ember-cli:2.13.1 bower --allow-root install bootstrap
-$ docker run -ti -v $(pwd):/myapp danlynn/ember-cli:2.13.1 ember generate model user
-$ docker run -ti -v $(pwd):/myapp -p 4200:4200 -p 49153:49153 danlynn/ember-cli:2.13.1
+$ docker run -ti -v $(pwd):/myapp danlynn/ember-cli:2.13.2 npm install
+$ docker run -ti -v $(pwd):/myapp danlynn/ember-cli:2.13.2 bower --allow-root install bootstrap
+$ docker run -ti -v $(pwd):/myapp danlynn/ember-cli:2.13.2 ember generate model user
+$ docker run -ti -v $(pwd):/myapp -p 4200:4200 -p 49153:49153 danlynn/ember-cli:2.13.2
 ```
 
 Alternatively, you could simply launch into a bash shell and execute the commands in the normal fashion:
@@ -198,7 +202,7 @@ Alternatively, you could simply launch into a bash shell and execute the command
 ```
 $ mkdir new_ember_app
 $ cd new_ember_app
-$ docker run -ti -v $(pwd):/myapp -p 4200:4200 -p 49153:49153 danlynn/ember-cli:2.13.1 bash
+$ docker run -ti -v $(pwd):/myapp -p 4200:4200 -p 49153:49153 danlynn/ember-cli:2.13.2 bash
 
 root@9ad4805d2b50:/myapp# ember init
 root@9ad4805d2b50:/myapp# npm install
