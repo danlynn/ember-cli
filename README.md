@@ -1,6 +1,6 @@
 This image contains everything you need to have a working development environment for ember-cli.  The container's working dir is /myapp so that you can setup a volume mapping your project dir to /myapp in the container.
 
-[![Docker Hub](http://dockeri.co/image/danlynn/ember-cli "Docker Hub")](https://hub.docker.com/r/danlynn/ember-cli/)
+![stars](https://img.shields.io/docker/stars/danlynn/ember-cli.svg) ![pulls](https://img.shields.io/docker/pulls/danlynn/ember-cli.svg) ![automated](https://img.shields.io/docker/automated/danlynn/ember-cli.svg) ![automated](https://img.shields.io/docker/build/danlynn/ember-cli.svg)
 
 ### Supported tags and respective `Dockerfile` links
 
