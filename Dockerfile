@@ -29,5 +29,5 @@ RUN \
 
 # Install ember-cli
 RUN \
-	npm install -g ember-cli@2.14.0
+	npm install -g ember-cli@2.14.1
 
