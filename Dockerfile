@@ -1,4 +1,4 @@
-FROM node:4.8.4
+FROM node:6.11.2
 MAINTAINER Dan Lynn <docker@danlynn.org>
 
 # ember server on port 4200
@@ -9,6 +9,11 @@ WORKDIR /myapp
 # run ember server on container start
 CMD ["ember", "server"]
 
+# Install watchman build dependencies
+RUN \
+	apt-get update -y && \
+	apt-get install -y python-dev
+
 # install watchman
 # Note: See the README.md to find out how to increase the
 # fs.inotify.max_user_watches value so that watchman will 
@@ -16,7 +21,7 @@ CMD ["ember", "server"]
 RUN \
 	git clone https://github.com/facebook/watchman.git &&\
 	cd watchman &&\
-	git checkout v3.5.0 &&\
+	git checkout v4.7.0 &&\
 	./autogen.sh &&\
 	./configure &&\
 	make &&\
