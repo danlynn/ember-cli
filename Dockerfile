@@ -1,4 +1,4 @@
-FROM node:8.2.1
+FROM node:6.11.2
 MAINTAINER Dan Lynn <docker@danlynn.org>
 
 # ember server on port 4200
@@ -31,14 +31,13 @@ RUN \
 RUN \
 	npm install -g bower@1.8.0
 
-# install pre-compiled phantomjs that works with node 8
-RUN \
-    mkdir /tmp/phantomjs && \
-    curl -L https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 | tar -xvj -C /tmp/phantomjs --strip-components=1 phantomjs-2.1.1-linux-x86_64/bin &&\
-    mv /tmp/phantomjs/bin/phantomjs /usr/bin &&\
-    rm -rf /tmp/phantomjs
+# install pre-compiled phantomjs that works with node 8 
+RUN \ 
+    mkdir /tmp/phantomjs && \ 
+    curl -L https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 | tar -xvj -C /tmp/phantomjs --strip-components=1 phantomjs-2.1.1-linux-x86_64/bin &&\ 
+    mv /tmp/phantomjs/bin/phantomjs /usr/bin &&\ 
+    rm -rf /tmp/phantomjs 
 
 # Install ember-cli
 RUN \
-	npm install -g ember-cli@2.14.2
-
+	npm install -g ember-cli@2.15.0
