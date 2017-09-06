@@ -53,18 +53,18 @@ This image contains everything you need to have a working development environmen
 
 This image was originally based on: [geoffreyd/ember-cli](https://registry.hub.docker.com/u/geoffreyd/ember-cli/) (hat tip)
 
-`ember-cli 2.15.0 + node 6.11.2/8.4.0 + npm 3.10.10/5.3.0 + bower 1.8.0 + phantomjs 2.1.1 + watchman 4.7.0`
+`ember-cli 2.15.0 + node 6.11.2/8.4.0 + npm 3.10.10/5.3.0 + bower 1.8.0 + phantomjs 2.1.1 + chrome 61.0.3163.79 + watchman 4.7.0`
 
 ![ember-cli logo](https://raw.githubusercontent.com/danlynn/ember-cli/master/logo.png)
 
 ### Important Change in ember-cli:2.15.0
 
-As of ember-cli:2.15.0, image has changed the default 'latest' docker tag to always use the LTS (long term support) version of node (as recommended by the ember-cli project).  From this point forward, there will be the following tagged releases:
+Since ember-cli 2.15.0 now uses headless chrome by default on new projects when running `ember test`, google-chrome is now installed in addition to phantomjs.  Existing projects will continue to run tests just fine with their testem.js configured for phantomjs.  Also note that we have switched to installing the official phantomjs binary releases.
 
-+ `latest` - using the latest version of ember-cli and the node LTS version.  This version will also be tagged with the LTS node version like: `2.15.0-node_6.11`.  Additionally, this version will be tagged with the ember-cli version like: `2.15.0`.
+As of ember-cli:2.15.0, the default 'latest' docker tag will now always use the LTS (long term support) version of node (as recommended by the ember-cli project).  From this point forward, there will be the following tagged releases:
+
++ `latest` - using the latest version of ember-cli and the LTS version of node.  This version will also be tagged with the LTS node version like: `2.15.0-node_6.11`.  Additionally, this version will be tagged with the ember-cli version like: `2.15.0`.
 + A second tagged release will be provided with each new ember-cli release that uses the current node release with the latest features.  It will be tagged like: `2.15.0-node_8.4`.
-
-Also, note that we have switched to the official phantomjs binary releases.
 
 ### Important Change in ember-cli:2.14.2
 
