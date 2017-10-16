@@ -5,7 +5,7 @@ This image contains everything you need to have a working development environmen
 ### Supported tags and respective `Dockerfile` links
 
 + [`2.16.2`,`2.16.2-node_6.11`,`latest` (2.16.2/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.16.2/Dockerfile)
-+ [`2.16.2-node_8.4` (2.16.2-node_8.4/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.16.2-node_8.4/Dockerfile)
++ [`2.16.2-node_8.7` (2.16.2-node_8.7/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.16.2-node_8.7/Dockerfile)
 + [`2.15.1`,`2.15.1-node_6.11`,`latest` (2.15.1/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.15.1/Dockerfile)
 + [`2.15.1-node_8.4` (2.15.1-node_8.4/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.15.1-node_8.4/Dockerfile)
 + [`2.15.0`,`2.15.0-node_6.11` (2.15.0/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.15.0/Dockerfile)
@@ -33,7 +33,7 @@ This image contains everything you need to have a working development environmen
 
 This image was originally based on: [geoffreyd/ember-cli](https://registry.hub.docker.com/u/geoffreyd/ember-cli/) (hat tip)
 
-`ember-cli 2.16.2 + node 6.11.4/8.7.0 + npm 3.10.10/5.3.0 + bower 1.8.0 + yarn 0.27.5 + phantomjs 2.1.1 + chrome 61.0.3163.79 + watchman 4.7.0`
+`ember-cli 2.16.2 + node 6.11.4/8.7.0 + npm 3.10.10/5.4.2 + bower 1.8.0 + yarn 0.27.5 + phantomjs 2.1.1 + chrome 61.0.3163.79 + watchman 4.7.0`
 
 ![ember-cli logo](https://raw.githubusercontent.com/danlynn/ember-cli/master/logo.png)
 
