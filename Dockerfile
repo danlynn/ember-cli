@@ -1,8 +1,9 @@
-FROM node:6.11.4
+FROM node:8.9.1
 MAINTAINER Dan Lynn <docker@danlynn.org>
 
 # ember server on port 4200
 # livereload server on port 49153 (changed in v2.11.1 from 49152)
+# test server on port 5779
 EXPOSE 4200 49153 5779
 WORKDIR /myapp
 
@@ -64,7 +65,7 @@ RUN apt-get update &&\
 RUN \
 	sed -i 's/"$@"/--no-sandbox "$@"/g' /opt/google/chrome/google-chrome
 
-# set container bash prompt color to green in order to 
+# set container bash prompt color to blue in order to 
 # differentiate container terminal sessions from host 
 # terminal sessions
 RUN \
@@ -72,4 +73,4 @@ RUN \
 
 # Install ember-cli
 RUN \
-	npm install -g ember-cli@2.16.2
+	npm install -g ember-cli@2.17.0
