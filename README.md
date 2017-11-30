@@ -48,7 +48,7 @@ Node has moved the LTS tag from 6.11 to 8.9.  Since ember always supports the LT
 1. The test server port 5779 is now exposed in the Dockerfile.  In order to be able to hit the test server on your host OS, you will still need to expose the port in either your docker-compose.yml file or in your docker command line - just like you do with the ember server and livereload.
 
    ```
-   docker run --rm -ti -v $(pwd):/myapp -p 4200:4200 -p 49153:49153 -p 7357:7357 danlynn/ember-cli:2.16.2 bash
+   docker run --rm -ti -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:2.16.2 bash
    
    root@9ad4805d2b50:/myapp# ember test --server
    ```
@@ -56,7 +56,7 @@ Node has moved the LTS tag from 6.11 to 8.9.  Since ember always supports the LT
 2. Yarn is now part of the docker image.  You can still rely on npm and bower to install your dependencies.  But, now you have the choice of using the shiny new yarn instead.
 
    ```
-   docker run --rm -ti -v $(pwd):/myapp -p 4200:4200 -p 49153:49153 -p 7357:7357 danlynn/ember-cli:2.16.2 bash
+   docker run --rm -ti -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:2.16.2 bash
    
    root@9ad4805d2b50:/myapp# ember init --yarn
    root@9ad4805d2b50:/myapp# ember install ember-cli-mirage --yarn
@@ -78,7 +78,7 @@ As of ember-cli:2.14.2, this image has changed the default 'latest' docker tag t
 
 ### Important Change in ember-cli:2.11.1
 
-As of ember-cli:2.11.1, ember-cli livereload listens on port 49153 by default insteadof 49152.  Dockerfile now exposes 49153.
+As of ember-cli:2.11.1, ember-cli livereload listens on port 7020 by default insteadof 49152.  Dockerfile now exposes 49153.
 
 ### Important Change in ember-cli:2.10.0
 
@@ -89,8 +89,8 @@ As of ember-cli:2.10.0, this image has changed its `ENTRYPOINT` to the docker co
 Launch ember server (unchanged):
 
 ```
-OLD: $ docker run -ti --rm -v $(pwd):/myapp -p 4200:4200 -p 49153:49153 danlynn/ember-cli:2.9.1
-NEW: $ docker run -ti --rm -v $(pwd):/myapp -p 4200:4200 -p 49153:49153 danlynn/ember-cli:2.17.0
+OLD: $ docker run -ti --rm -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 danlynn/ember-cli:2.9.1
+NEW: $ docker run -ti --rm -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 danlynn/ember-cli:2.17.0
 
 ```
 
@@ -134,7 +134,7 @@ Setup a project to use this container via [docker-compose](https://www.docker.co
      command: server --watcher polling
      ports:
        - "4200:4200"
-       - "49153:49153"
+       - "7020:7020"
        - "7357:7357"
    ```
 
@@ -226,7 +226,7 @@ Example:
 $ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:2.17.0 npm install
 $ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:2.17.0 bower --allow-root install bootstrap
 $ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:2.17.0 ember generate model user
-$ docker run --rm -ti -v $(pwd):/myapp -p 4200:4200 -p 49153:49153 -p 7357:7357 danlynn/ember-cli:2.17.0
+$ docker run --rm -ti -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:2.17.0
 ```
 
 Note that the `--rm` prevents a bunch of stopped containers from accumulating from these one-off commands.  They take up space and since pretty much any change made by these commands will only affect what is in your project dir (/myapp in the container), there is no need to keep them around.
@@ -236,7 +236,7 @@ Alternatively, you could simply launch into a bash shell and execute the command
 ```
 $ mkdir new_ember_app
 $ cd new_ember_app
-$ docker run --rm -it -v $(pwd):/myapp -p 4200:4200 -p 49153:49153 -p 7357:7357 danlynn/ember-cli:2.17.0 bash
+$ docker run --rm -it -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:2.17.0 bash
 
 root@9ad4805d2b50:/myapp# ember init
 root@9ad4805d2b50:/myapp# ember init --yarn
@@ -246,7 +246,7 @@ root@9ad4805d2b50:/myapp# ember server
 root@9ad4805d2b50:/myapp# ember test --server
 ```
 
-Note that bash had to be launched with `-p 4200:4200 -p 49153:49153` in order to be able to access the `ember server` on port 4200 and enable Livereload on port 49153.  The `-p 7357:7357` is needed if you intend to run `ember test --server`.
+Note that bash had to be launched with `-p 4200:4200 -p 7020:7020` in order to be able to access the `ember server` on port 4200 and enable Livereload on port 7020.  The `-p 7357:7357` is needed if you intend to run `ember test --server`.
 
 Also note that the `npm install` is done automagically by the `ember init` command on newer versions of ember.  Also, `bower --allow-root install` is not used as much anymore.  There are no bower packages or dependencies in the default project created by `ember init`.  Using the `--yarn` option on `ember init --yarn` will use yarn instead of npm to install dependencies.
 
