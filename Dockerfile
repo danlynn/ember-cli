@@ -1,10 +1,10 @@
-FROM node:8.9.1
+FROM node:9.2.0
 MAINTAINER Dan Lynn <docker@danlynn.org>
 
 # ember server on port 4200
-# livereload server on port 49153 (changed in v2.11.1 from 49152)
+# livereload server on port 7020 (changed in v2.17.0 from 49153)
 # test server on port 5779
-EXPOSE 4200 49153 5779
+EXPOSE 4200 7020 5779
 WORKDIR /myapp
 
 # run ember server on container start
