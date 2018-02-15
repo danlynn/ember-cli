@@ -30,7 +30,7 @@ RUN \
 
 # install bower
 RUN \
-	npm install -g bower@1.8.0
+	npm install -g bower@1.8.2
 
 # install official phantomjs binaries
 RUN \
@@ -64,4 +64,4 @@ RUN \
 
 # Install ember-cli
 RUN \
-	npm install -g ember-cli@2.18.0
+	npm install -g ember-cli@2.18.2

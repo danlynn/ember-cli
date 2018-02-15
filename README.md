@@ -4,12 +4,12 @@ This image contains everything you need to have a working development environmen
 
 ### Supported tags and respective `Dockerfile` links
 
-+ [`2.18.0`,`2.18.0-node_8.9`,`latest` (2.18.0/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.18.0/Dockerfile)
++ [`2.18.2`,`2.18.2-node_8.9`,`latest` (2.18.2/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.18.2/Dockerfile)
++ [`2.18.2-node_9.5` (2.18.2-node_9.5/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.18.2-node_9.5/Dockerfile)
++ [`2.18.0`,`2.18.0-node_8.9` (2.18.0/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.18.0/Dockerfile)
 + [`2.18.0-node_9.3` (2.18.0-node_9.3/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.18.0-node_9.3/Dockerfile)
 + [`2.17.1`,`2.17.1-node_8.9` (2.17.1/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.17.1/Dockerfile)
 + [`2.17.1-node_9.3` (2.17.1-node_9.3/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.17.1-node_9.3/Dockerfile)
-+ [`2.17.0`,`2.17.0-node_8.9` (2.17.0/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.17.0/Dockerfile)
-+ [`2.17.0-node_9.2` (2.17.0-node_9.2/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.17.0-node_9.2/Dockerfile)
 + [`2.16.2`,`2.16.2-node_6.11` (2.16.2/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.16.2/Dockerfile)
 + [`2.16.2-node_8.4` (2.16.2-node_8.4/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.16.2-node_8.4/Dockerfile)
 + [`2.15.1`,`2.15.1-node_6.11` (2.15.1/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.15.1/Dockerfile)
@@ -37,7 +37,7 @@ This image contains everything you need to have a working development environmen
 
 This image was originally based on: [geoffreyd/ember-cli](https://registry.hub.docker.com/u/geoffreyd/ember-cli/) (hat tip)
 
-`ember-cli 2.18.0 + node 8.9.4/9.3.0 + npm 5.6.0/5.5.1 + bower 1.8.0 + yarn 1.3.2 + phantomjs 2.1.1 + chrome 63.0.3239.132 + watchman 4.7.0`
+`ember-cli 2.18.2 + node 8.9.4/9.5.0 + npm 5.6.0/5.5.1 + bower 1.8.0 + yarn 1.3.2 + phantomjs 2.1.1 + chrome 63.0.3239.132 + watchman 4.7.0`
 
 ![ember-cli logo](https://raw.githubusercontent.com/danlynn/ember-cli/master/logo.png)
 
@@ -92,7 +92,7 @@ Launch ember server (unchanged):
 
 ```
 OLD: $ docker run -ti --rm -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 danlynn/ember-cli:2.9.1
-NEW: $ docker run -ti --rm -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 danlynn/ember-cli:2.18.0
+NEW: $ docker run -ti --rm -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 danlynn/ember-cli:2.18.2
 
 ```
 
@@ -100,14 +100,14 @@ Run ember tests:
 
 ```
 OLD: $ docker run -ti --rm -v $(pwd):/myapp danlynn/ember-cli:2.9.1 test
-NEW: $ docker run -ti --rm -v $(pwd):/myapp danlynn/ember-cli:2.18.0 ember test
+NEW: $ docker run -ti --rm -v $(pwd):/myapp danlynn/ember-cli:2.18.2 ember test
 ```
 
 Launch bash shell:
 
 ```
 OLD: $ docker run -ti --rm -v $(pwd):/myapp --entrypoint=/bin/bash danlynn/ember-cli:2.9.1
-NEW: $ docker run -ti --rm -v $(pwd):/myapp danlynn/ember-cli:2.18.0 bash
+NEW: $ docker run -ti --rm -v $(pwd):/myapp danlynn/ember-cli:2.18.2 bash
 ```
 
 
@@ -119,7 +119,7 @@ Setup a project to use this container via [docker-compose](https://www.docker.co
 
    ```
    ember: &defaults
-     image: danlynn/ember-cli:2.18.0
+     image: danlynn/ember-cli:2.18.2
      volumes:
        - .:/myapp
 
@@ -179,7 +179,7 @@ Setup a project to use this container via [docker-compose](https://www.docker.co
    Then watchman is running out of resources trying to track all the files in a large ember app.  To increase the `fs.inotify.max_user_watches` count to something that is more appropriate for an ember app, stop your docker-compose server by hitting ctrl-c (or `docker-compose stop server` if necessary) then execute the following command:
    
    ```
-   $ docker run --rm --privileged danlynn/ember-cli:2.18.0 sysctl -w fs.inotify.max_user_watches=524288
+   $ docker run --rm --privileged danlynn/ember-cli:2.18.2 sysctl -w fs.inotify.max_user_watches=524288
    ```
    
    Note that this will affect all containers that run on the current docker-machine from this point forward because `fs.inotify.max_user_watches` is a system-wide setting.  This shouldn't be a big deal however, so go ahead and give it a try.  Then start the docker-compose service again with
@@ -220,15 +220,15 @@ Note that the `--rm` prevents any changes outside of your project dir (/myapp in
 
 ### Command Usage for `docker run`
 
-Basically put `docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:2.18.0` before any command you run.
+Basically put `docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:2.18.2` before any command you run.
 
 Example:
 
 ```
-$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:2.18.0 npm install
-$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:2.18.0 bower --allow-root install bootstrap
-$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:2.18.0 ember generate model user
-$ docker run --rm -ti -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:2.18.0
+$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:2.18.2 npm install
+$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:2.18.2 bower --allow-root install bootstrap
+$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:2.18.2 ember generate model user
+$ docker run --rm -ti -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:2.18.2
 ```
 
 Note that the `--rm` prevents a bunch of stopped containers from accumulating from these one-off commands.  They take up space and since pretty much any change made by these commands will only affect what is in your project dir (/myapp in the container), there is no need to keep them around.
@@ -238,7 +238,7 @@ Alternatively, you could simply launch into a bash shell and execute the command
 ```
 $ mkdir new_ember_app
 $ cd new_ember_app
-$ docker run --rm -it -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:2.18.0 bash
+$ docker run --rm -it -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:2.18.2 bash
 
 root@9ad4805d2b50:/myapp# ember init
 root@9ad4805d2b50:/myapp# ember init --yarn
