@@ -32,13 +32,6 @@ RUN \
 RUN \
 	npm install -g bower@1.8.2
 
-# install official phantomjs binaries
-RUN \
-	mkdir /tmp/phantomjs &&\
-	curl -L https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 | tar -xvj -C /tmp/phantomjs --strip-components=1 phantomjs-2.1.1-linux-x86_64/bin &&\
-	mv /tmp/phantomjs/bin/phantomjs /usr/bin &&\
-	rm -rf /tmp/phantomjs
-
 # install chrome for default testem config (as of 2.15.0)
 RUN apt-get update &&\
     apt-get install -y \
@@ -64,4 +57,4 @@ RUN \
 
 # Install ember-cli
 RUN \
-	npm install -g ember-cli@2.18.2
+	npm install -g ember-cli@3.0.0
