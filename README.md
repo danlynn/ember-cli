@@ -41,7 +41,9 @@ This image was originally based on: [geoffreyd/ember-cli](https://registry.hub.d
 
 `ember-cli 3.0.0 + node 8.9.4/9.5.0 + npm 5.6.0/5.6.0 + bower 1.8.2 + yarn 1.3.2 + chrome 64.0.3282.167 + watchman 4.7.0`
 
-<img src="https://raw.githubusercontent.com/danlynn/ember-cli/master/logo.png" alt="ember-cli logo" style="width: 300px;">
+
+![ember-cli logo](https://raw.githubusercontent.com/danlynn/ember-cli/master/logo.png)
+
 
 ### Important Change in ember-cli:3.0.0
 
