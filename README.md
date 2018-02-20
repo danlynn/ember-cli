@@ -47,7 +47,30 @@ This image was originally based on: [geoffreyd/ember-cli](https://registry.hub.d
 
 ### Important Change in ember-cli:3.0.0
 
-PhantomJS support is not longer supported in Ember 3.0.0.  Thus, it has been removed from the docker image.  Ember 3.0.0 has moved away from script tag driven development.  Thus, it no longer supports Bower in that context.  However, your own projects may still be using Bower to pull in dependencies.  Therefore, we have retained Bower 1.8.2 in the docker image.  It is notable that Ember 3.0.0 also drops support for IE9 and IE10.
+PhantomJS support is not longer supported in Ember 3.0.0.  Thus, it has been removed from the docker image.  Ember 3.0.0 has moved away from script tag driven development.  Thus, it no longer supports Bower in that context.  However, your own projects may still be using Bower to pull in dependencies.  Therefore, we have retained Bower 1.8.2 in the docker image.  
+
+It is notable that Ember 3.0.0 also drops support for IE9 and IE10.  Furthermore, IE11 is only supported as a target if ember env (`EMBER_ENV`) is 'production' -OR- if the new `CI` env var is truthy.  Therefore, if you want to support IE11 in 'development' or 'test' modes then include this env var in your docker commands with `--env CI=true` like:
+
+```
+docker run --env CI=true --rm -ti -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:3.0.0 bash
+   
+root@9ad4805d2b50:/myapp# ember test
+```
+
+Similarly, you may update your `docker-compose.yml` file to include this env var like:
+
+```
+   server:
+     image: danlynn/ember-cli:3.0.0
+     environment:
+       CI: true
+     volumes:
+       - .:/myapp
+     ports:
+       - "4200:4200"
+       - "7020:7020"
+       - "7357:7357"
+```
 
 ### Important Change in ember-cli:2.17.0
 
