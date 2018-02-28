@@ -20,9 +20,8 @@ RUN \
 # fs.inotify.max_user_watches value so that watchman will 
 # work better with ember projects.
 RUN \
-	git clone https://github.com/facebook/watchman.git &&\
+	git clone --branch v4.9.0 --depth 1 https://github.com/facebook/watchman.git &&\
 	cd watchman &&\
-	git checkout v4.7.0 &&\
 	./autogen.sh &&\
 	./configure &&\
 	make &&\
