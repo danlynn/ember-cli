@@ -7,33 +7,24 @@ MAINTAINER Dan Lynn <docker@danlynn.org>
 EXPOSE 4200 7020 5779
 WORKDIR /myapp
 
-# run ember server on container start
-CMD ["ember", "server"]
+COPY ./entrypoint.sh /entrypoint.sh
 
-# Install watchman build dependencies 
-RUN \ 
-	apt-get update -y &&\
-	apt-get install -y python-dev
- 
-# install watchman
-# Note: See the README.md to find out how to increase the
-# fs.inotify.max_user_watches value so that watchman will 
-# work better with ember projects.
+# run ember server on container start
+CMD ["sh", "/entrypoint.sh"]
+
+# Install watchman build dependencies
 RUN \
-	git clone https://github.com/facebook/watchman.git &&\
+	apt-get update -y &&\
+	apt-get install -y python-dev &&\
+ 	git clone https://github.com/facebook/watchman.git &&\
 	cd watchman &&\
 	git checkout v4.7.0 &&\
 	./autogen.sh &&\
 	./configure &&\
 	make &&\
-	make install
-
-# install bower
-RUN \
-	npm install -g bower@1.8.2
-
-# install chrome for default testem config (as of 2.15.0)
-RUN apt-get update &&\
+	make install &&\
+	npm install -g bower@1.8.2 &&\
+	apt-get update &&\
     apt-get install -y \
         apt-transport-https \
         gnupg \
@@ -43,18 +34,7 @@ RUN apt-get update &&\
 	apt-get update &&\
 	apt-get install -y \
 	    google-chrome-stable \
-	    --no-install-recommends
-
-# tweak chrome to run with --no-sandbox option
-RUN \
-	sed -i 's/"$@"/--no-sandbox "$@"/g' /opt/google/chrome/google-chrome
-
-# set container bash prompt color to blue in order to 
-# differentiate container terminal sessions from host 
-# terminal sessions
-RUN \
-	echo 'PS1="\[\\e[0;94m\]${debian_chroot:+($debian_chroot)}\\u@\\h:\\w\\\\$\[\\e[m\] "' >> ~/.bashrc
-
-# Install ember-cli
-RUN \
+	    --no-install-recommends &&\
+	sed -i 's/"$@"/--no-sandbox "$@"/g' /opt/google/chrome/google-chrome &&\
+	echo 'PS1="\[\\e[0;94m\]${debian_chroot:+($debian_chroot)}\\u@\\h:\\w\\\\$\[\\e[m\] "' >> ~/.bashrc &&\
 	npm install -g ember-cli@3.0.0
