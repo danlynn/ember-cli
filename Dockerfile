@@ -1,10 +1,10 @@
-FROM node:8.9.4
+FROM node:8.11.1
 MAINTAINER Dan Lynn <docker@danlynn.org>
 
 # ember server on port 4200
 # livereload server on port 7020 (changed in v2.17.0 from 49153)
-# test server on port 5779
-EXPOSE 4200 7020 5779
+# test server on port 7357
+EXPOSE 4200 7020 7357
 WORKDIR /myapp
 
 # run ember server on container start
@@ -22,7 +22,7 @@ RUN \
 RUN \
 	git clone https://github.com/facebook/watchman.git &&\
 	cd watchman &&\
-	git checkout v4.7.0 &&\
+	git checkout v4.9.0 &&\
 	./autogen.sh &&\
 	./configure &&\
 	make &&\
@@ -30,7 +30,7 @@ RUN \
 
 # install bower
 RUN \
-	npm install -g bower@1.8.2
+	npm install -g bower@1.8.4
 
 # install chrome for default testem config (as of 2.15.0)
 RUN apt-get update &&\
@@ -55,6 +55,6 @@ RUN \
 RUN \
 	echo 'PS1="\[\\e[0;94m\]${debian_chroot:+($debian_chroot)}\\u@\\h:\\w\\\\$\[\\e[m\] "' >> ~/.bashrc
 
-# Install ember-cli
+# install ember-cli
 RUN \
-	npm install -g ember-cli@3.0.0
+	npm install -g ember-cli@3.1.1
