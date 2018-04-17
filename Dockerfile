@@ -33,7 +33,8 @@ RUN \
 	npm install -g bower@1.8.4
 
 # install chrome for default testem config (as of 2.15.0)
-RUN apt-get update &&\
+RUN \
+    apt-get update &&\
     apt-get install -y \
         apt-transport-https \
         gnupg \
@@ -57,4 +58,4 @@ RUN \
 
 # install ember-cli
 RUN \
-	npm install -g ember-cli@3.1.1
+	npm install -g ember-cli@3.1.2
