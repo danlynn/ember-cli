@@ -45,7 +45,7 @@ This image contains everything you need to have a working development environmen
 
 This image was originally based on: [geoffreyd/ember-cli](https://registry.hub.docker.com/u/geoffreyd/ember-cli/) (hat tip)
 
-`ember-cli 3.1.4 + node 8.11.2/10.1.0 + npm 5.6.0/5.6.0 + bower 1.8.4 + yarn 1.5.1 + chrome 65.0.3325.181 + watchman 4.9.0`
+`ember-cli 3.1.4 + node 8.11.2/10.1.0 + npm 5.6.0/5.6.0 + bower 1.8.4 + yarn 1.6.0 + chrome 66.0.3359.181 + watchman 4.9.0` 
 
 
 ![ember-cli logo](https://raw.githubusercontent.com/danlynn/ember-cli/master/logo.png)
