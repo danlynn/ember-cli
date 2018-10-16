@@ -5,7 +5,7 @@ This image contains everything you need to have a working development environmen
 ### Supported tags and respective `Dockerfile` links
 
 + [`3.5.0`,`3.5.0-node_8.12`,`latest` (3.5.0/Dockerfile)](https://github.com/danlynn/ember-cli/blob/3.5.0/Dockerfile)
-+ [`3.5.0-node_10.11` (3.5.0-node_10.11/Dockerfile)](https://github.com/danlynn/ember-cli/blob/3.5.0-node_10.11/Dockerfile)
++ [`3.5.0-node_10.12` (3.5.0-node_10.12/Dockerfile)](https://github.com/danlynn/ember-cli/blob/3.5.0-node_10.12/Dockerfile)
 + [`3.4.3`,`3.4.3-node_8.12`,`latest` (3.4.3/Dockerfile)](https://github.com/danlynn/ember-cli/blob/3.4.3/Dockerfile)
 + [`3.4.3-node_10.11` (3.4.3-node_10.11/Dockerfile)](https://github.com/danlynn/ember-cli/blob/3.4.3-node_10.11/Dockerfile)
 + [`3.4.2`,`3.4.2-node_8.12` (3.4.2/Dockerfile)](https://github.com/danlynn/ember-cli/blob/3.4.2/Dockerfile)
