@@ -1,4 +1,4 @@
-FROM node:8.12.0
+FROM node:10.13.0
 MAINTAINER Dan Lynn <docker@danlynn.org>
 
 # ember server on port 4200
@@ -32,7 +32,7 @@ RUN \
 RUN \
 	npm install -g bower@1.8.4
 
-# install chrome for default testem config (as of 2.15.0)
+# install chrome for default testem config (as of ember-cli 2.15.0)
 RUN \
     apt-get update &&\
     apt-get install -y \
@@ -58,4 +58,4 @@ RUN \
 
 # install ember-cli
 RUN \
-	npm install -g ember-cli@3.5.0
+	npm install -g ember-cli@3.5.1
