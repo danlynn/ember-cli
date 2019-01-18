@@ -4,7 +4,9 @@ This image contains everything you need to have a working development environmen
 
 ### Supported tags and respective `Dockerfile` links
 
-+ [`3.6.1`,`3.6.1-node_10.15`,`latest` (3.6.1/Dockerfile)](https://github.com/danlynn/ember-cli/blob/3.6.1/Dockerfile)
++ [`3.7.1`,`3.7.1-node_10.15`,`latest` (3.7.1/Dockerfile)](https://github.com/danlynn/ember-cli/blob/3.7.1/Dockerfile)
++ [`3.7.1-node_11.6` (3.7.1-node_11.6/Dockerfile)](https://github.com/danlynn/ember-cli/blob/3.7.1-node_11.6/Dockerfile)
++ [`3.6.1`,`3.6.1-node_10.15` (3.6.1/Dockerfile)](https://github.com/danlynn/ember-cli/blob/3.6.1/Dockerfile)
 + [`3.6.1-node_11.6` (3.6.1-node_11.6/Dockerfile)](https://github.com/danlynn/ember-cli/blob/3.6.1-node_11.6/Dockerfile)
 + [`3.6.0`,`3.6.0-node_10.13` (3.6.0/Dockerfile)](https://github.com/danlynn/ember-cli/blob/3.6.0/Dockerfile)
 + [`3.6.0-node_11.4` (3.6.0-node_11.4/Dockerfile)](https://github.com/danlynn/ember-cli/blob/3.6.0-node_11.4/Dockerfile)
@@ -51,7 +53,7 @@ This image contains everything you need to have a working development environmen
 
 This image was originally based on: [geoffreyd/ember-cli](https://registry.hub.docker.com/u/geoffreyd/ember-cli/) (hat tip)
 
-`ember-cli 3.6.1 + node 10.15.0/11.6.0 + npm 6.4.1/6.5.0-next.0 + bower 1.8.4 + yarn 1.12.3 + chrome 71.0.3578.98 + watchman 4.9.0`
+`ember-cli 3.7.1 + node 10.15.0/11.6.0 + npm 6.4.1/6.5.0-next.0 + bower 1.8.4 + yarn 1.12.3 + chrome 71.0.3578.98 + watchman 4.9.0`
 
 
 ![ember-cli logo](https://raw.githubusercontent.com/danlynn/ember-cli/master/logo.png)
@@ -146,7 +148,7 @@ Launch ember server (unchanged):
 
 ```
 OLD: $ docker run -ti --rm -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 danlynn/ember-cli:2.9.1
-NEW: $ docker run -ti --rm -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 danlynn/ember-cli:3.6.1
+NEW: $ docker run -ti --rm -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 danlynn/ember-cli:3.7.1
 
 ```
 
@@ -154,14 +156,14 @@ Run ember tests:
 
 ```
 OLD: $ docker run -ti --rm -v $(pwd):/myapp danlynn/ember-cli:2.9.1 test
-NEW: $ docker run -ti --rm -v $(pwd):/myapp danlynn/ember-cli:3.6.1 ember test
+NEW: $ docker run -ti --rm -v $(pwd):/myapp danlynn/ember-cli:3.7.1 ember test
 ```
 
 Launch bash shell:
 
 ```
 OLD: $ docker run -ti --rm -v $(pwd):/myapp --entrypoint=/bin/bash danlynn/ember-cli:2.9.1
-NEW: $ docker run -ti --rm -v $(pwd):/myapp danlynn/ember-cli:3.6.1 bash
+NEW: $ docker run -ti --rm -v $(pwd):/myapp danlynn/ember-cli:3.7.1 bash
 ```
 
 
@@ -173,7 +175,7 @@ Setup a project to use this container via [docker-compose](https://www.docker.co
 
    ```
    ember: &defaults
-     image: danlynn/ember-cli:3.6.1
+     image: danlynn/ember-cli:3.7.1
      volumes:
        - .:/myapp
 
@@ -233,7 +235,7 @@ Setup a project to use this container via [docker-compose](https://www.docker.co
    Then watchman is running out of resources trying to track all the files in a large ember app.  To increase the `fs.inotify.max_user_watches` count to something that is more appropriate for an ember app, stop your docker-compose server by hitting ctrl-c (or `docker-compose stop server` if necessary) then execute the following command:
    
    ```
-   $ docker run --rm --privileged danlynn/ember-cli:3.6.1 sysctl -w fs.inotify.max_user_watches=524288
+   $ docker run --rm --privileged danlynn/ember-cli:3.7.1 sysctl -w fs.inotify.max_user_watches=524288
    ```
    
    Note that this will affect all containers that run on the current docker-machine from this point forward because `fs.inotify.max_user_watches` is a system-wide setting.  This shouldn't be a big deal however, so go ahead and give it a try.  Then start the docker-compose service again with
@@ -274,15 +276,15 @@ Note that the `--rm` prevents any changes outside of your project dir (/myapp in
 
 ### Command Usage for `docker run`
 
-Basically put `docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:3.6.1` before any command you run.
+Basically put `docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:3.7.1` before any command you run.
 
 Example:
 
 ```
-$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:3.6.1 npm install
-$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:3.6.1 bower --allow-root install bootstrap
-$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:3.6.1 ember generate model user
-$ docker run --rm -ti -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:3.6.1
+$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:3.7.1 npm install
+$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:3.7.1 bower --allow-root install bootstrap
+$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:3.7.1 ember generate model user
+$ docker run --rm -ti -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:3.7.1
 ```
 
 Note that the `--rm` prevents a bunch of stopped containers from accumulating from these one-off commands.  They take up space and since pretty much any change made by these commands will only affect what is in your project dir (/myapp in the container), there is no need to keep them around.
@@ -292,7 +294,7 @@ Alternatively, you could simply launch into a bash shell and execute the command
 ```
 $ mkdir new_ember_app
 $ cd new_ember_app
-$ docker run --rm -it -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:3.6.1 bash
+$ docker run --rm -it -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:3.7.1 bash
 
 root@9ad4805d2b50:/myapp# ember init
 root@9ad4805d2b50:/myapp# ember init --yarn
