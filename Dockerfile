@@ -30,7 +30,7 @@ RUN \
 
 # install bower
 RUN \
-	npm install -g bower@1.8.4
+	npm install -g bower@1.8.8
 
 # install chrome for default testem config (as of ember-cli 2.15.0)
 RUN \
