@@ -1,6 +1,11 @@
+![ember-cli logo](https://raw.githubusercontent.com/danlynn/ember-cli/master/logo.png)
+
 This image contains everything you need to have a working development environment for ember-cli.  The container's working dir is /myapp so that you can setup a volume mapping your project dir to /myapp in the container. ([MIT License](https://github.com/danlynn/ember-cli/blob/master/LICENSE))
 
 ![stars](https://img.shields.io/docker/stars/danlynn/ember-cli.svg) ![pulls](https://img.shields.io/docker/pulls/danlynn/ember-cli.svg) ![automated](https://img.shields.io/docker/automated/danlynn/ember-cli.svg) ![automated](https://img.shields.io/docker/build/danlynn/ember-cli.svg) ![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg)
+
+`ember-cli 3.8.1 + node 10.15.2/11.10.1 + npm 6.4.1/6.7.0 + bower 1.8.8 + yarn 1.13.0 + chrome 72.0.3626.121 + watchman 4.9.0`
+
 
 ### Supported tags and respective `Dockerfile` links
 
@@ -53,11 +58,110 @@ This image contains everything you need to have a working development environmen
 
 This image was originally based on: [geoffreyd/ember-cli](https://registry.hub.docker.com/u/geoffreyd/ember-cli/) (hat tip)
 
-`ember-cli 3.8.1 + node 10.15.2/11.10.1 + npm 6.4.1/6.7.0 + bower 1.8.8 + yarn 1.13.0 + chrome 72.0.3626.121 + watchman 4.9.0`
+
+## How to use
+
+The absolutely easiest way to use this ember-cli docker image is to use docker-compose.  I've put together a git repo that contains a stub [ember-cli docker-compose template](https://github.com/danlynn/ember-cli-docker-compose-template) project that makes this a snap!  Full details of the optimized docker-compose environment for developing ember-cli project can be found in that repo's [README](https://github.com/danlynn/ember-cli-docker-compose-template).
+
+Basically, it creates a new project directory with the following files: 
+
+```
+ember-project
+  docker-compose.yml
+  README-template.md
+  bash
+  ember
+  serve
+```
+
+The `docker-compose.yml` is configured to use this [danlynn/ember-cli](https://cloud.docker.com/u/danlynn/repository/docker/danlynn/ember-cli) docker image from dockerhub and looks like this:
+
+```
+version: '2'
+
+services:
+  ember:
+    image: danlynn/ember-cli:latest
+    volumes:
+      - .:/myapp
+      - .bash_history:/root/.bash_history
+      - node_modules:/myapp/node_modules
+    tmpfs:
+      - /myapp/tmp
+    ports:
+      - "4200:4200"
+      - "7020:7020"
+      - "7357:7357"
+
+volumes:
+  node_modules:
+```
+
+The `bash`, `ember`, and `serve` commands are [shortcuts](https://github.com/danlynn/ember-cli-docker-compose-template#shortcuts) for performing the most common ember dev tasks.
+
+### Quick start instructions:
+
+Copy and run the following 3 lines in your terminal to create a new ember app named 'ember-project' and then host it on [http://locahost:4200](http://locahost:4200):
+
+```
+$ proj_dir='ember-project' && curl -Ls https://github.com/danlynn/ember-cli-docker-compose-template/archive/master.zip > "$proj_dir.zip" && unzip -qq -j "$proj_dir.zip" -d "$proj_dir" && rm "$proj_dir.zip" && cd "$proj_dir" && mv README.md README-template.md && ls -l
+$ ./ember init
+$ ./serve
+```
+
+Replace the "ember-project" at the beginning with the name to use for the new project dir.  This first line will create a new directory named "ember-project" populated with the contents of the ember-cli-docker-compose-template repo from github then cd into that directory ready to use.  The last 2 lines are common commands that use the 'shortcuts' to run the ember command in the container and then start the ember server.
 
 
-![ember-cli logo](https://raw.githubusercontent.com/danlynn/ember-cli/master/logo.png)
+### Slightly more detailed instructions:
 
+More detailed usage instructions can be found in the [ember-cli docker-compose template](https://github.com/danlynn/ember-cli-docker-compose-template#slightly-more-detailed-instructions) repo [README](https://github.com/danlynn/ember-cli-docker-compose-template#slightly-more-detailed-instructions).
+
+
+## Straight docker usage
+
+You can ignore docker-compose completely and simply use straight docker commands to interact with your ember project in the container.
+
+### Command Usage for `docker run`
+
+Basically put `docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:3.8.1` before any command you run.
+
+Example:
+
+```
+$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:3.8.1 npm install
+$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:3.8.1 bower --allow-root install bootstrap
+$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:3.8.1 ember generate model user
+$ docker run --rm -ti -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:3.8.1
+```
+
+Note that the `--rm` prevents a bunch of stopped containers from accumulating from these one-off commands.  They take up space and since pretty much any change made by these commands will only affect what is in your project dir (/myapp in the container), there is no need to keep them around.
+
+### Launching bash shell then running commands directly
+
+You could simply launch into a bash shell and execute the commands in the normal fashion:
+
+```
+$ mkdir new_ember_app
+$ cd new_ember_app
+$ docker run --rm -it -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:3.8.1 bash
+
+root@9ad4805d2b50:/myapp# ember init
+root@9ad4805d2b50:/myapp# ember init --yarn
+root@9ad4805d2b50:/myapp# npm install
+root@9ad4805d2b50:/myapp# bower --allow-root install
+root@9ad4805d2b50:/myapp# ember server
+root@9ad4805d2b50:/myapp# ember test
+root@9ad4805d2b50:/myapp# ember test --server
+```
+
+Note that bash had to be launched with `-p 4200:4200 -p 7020:7020` in order to be able to access the `ember server` on port 4200 and enable Livereload on port 7020.  The `-p 7357:7357` is needed if you intend to run `ember test --server`.
+
+Also note that the `npm install` is done automagically by the `ember init` command on newer versions of ember.  Also, `bower --allow-root install` is not used as much anymore.  There are no bower packages or dependencies in the default project created by `ember init`.  Using the `--yarn` option on `ember init --yarn` will use yarn instead of npm to install dependencies.
+
+Also note that both npm and bower are pretty much being replaced by yarn.  Newer versions of ember-cli have built-in support for yarn on many commands.  Yarn works smoothly in place of npm.  Yarn can also replace your use of bower.  However, even though yarn used to support bower file formats directly, it no longer does.  You should instead use yarn's support for installing front-end web components.
+
+
+## Change Log
 
 ### Important Change in ember-cli:3.1.1
 
@@ -165,148 +269,3 @@ Launch bash shell:
 OLD: $ docker run -ti --rm -v $(pwd):/myapp --entrypoint=/bin/bash danlynn/ember-cli:2.9.1
 NEW: $ docker run -ti --rm -v $(pwd):/myapp danlynn/ember-cli:3.8.1 bash
 ```
-
-
-### How to use
-
-Setup a project to use this container via [docker-compose](https://www.docker.com/products/docker-compose).  docker-compose is part of the all-in-one [docker-toolbox](https://www.docker.com/products/overview#/docker_toolbox) which is the easiest way to get up and running with docker.
-
-1. Create new project dir and add a docker-compose.yml file similar to the following:
-
-   ```
-   ember: &defaults
-     image: danlynn/ember-cli:3.8.1
-     volumes:
-       - .:/myapp
-
-   npm:
-     <<: *defaults
-     command: npm
-
-   bower:
-     <<: *defaults
-     command: bower --allow-root
-
-   server:
-     <<: *defaults
-     command: server --watcher polling
-     ports:
-       - "4200:4200"
-       - "7020:7020"
-       - "7357:7357"
-   ```
-
-2. Make sure that your docker-machine is already running:
-
-	```
-	$ docker-machine start default
-	```
-	
-	Or, if you haven't created one yet:
-	
-	```
-	$ docker-machine create --driver virtualbox default
-	```
-
-2. Create an ember app in the current dir:
-
-	```
-	$ docker-compose run --rm ember init
-	```
-
-3. Start the ember server:
-
-   ```
-   $ docker-compose up
-   ```
-
-   This launches the ember-cli server on port 4200 in the docker container. As you make changes to the ember webapp files, they will automagically be detected and the associated files will be recompiled and the browser will auto-reload showing the changes.
-   
-   Note that if you get an error something like
-   
-   ```
-   server_1 | Error: A non-recoverable condition has triggered.  Watchman needs your help!
-   server_1 | The triggering condition was at timestamp=1450119416: inotify-add-watch(/myapp/node_modules/ember-cli/node_modules/bower/node_modules/update-notifier/node_modules/latest-version/node_modules/package-json/node_modules/got/node_modules/duplexify/node_modules/readable-stream/doc) -> The user limit on the total number of inotify watches was reached; increase the fs.inotify.max_user_watches sysctl
-   server_1 | All requests will continue to fail with this message until you resolve
-   server_1 | the underlying problem.  You will find more information on fixing this at
-   server_1 | https://facebook.github.io/watchman/docs/troubleshooting.html#poison-inotify-add-watch
-   ```
-   
-   Then watchman is running out of resources trying to track all the files in a large ember app.  To increase the `fs.inotify.max_user_watches` count to something that is more appropriate for an ember app, stop your docker-compose server by hitting ctrl-c (or `docker-compose stop server` if necessary) then execute the following command:
-   
-   ```
-   $ docker run --rm --privileged danlynn/ember-cli:3.8.1 sysctl -w fs.inotify.max_user_watches=524288
-   ```
-   
-   Note that this will affect all containers that run on the current docker-machine from this point forward because `fs.inotify.max_user_watches` is a system-wide setting.  This shouldn't be a big deal however, so go ahead and give it a try.  Then start the docker-compose service again with
-   
-   ```
-   $ docker-compose up
-   ```
-
-4. Launch the ember webapp:
-
-   You will need to first determine the IP of the docker container:
-
-   ```
-   $ docker-machine ip default
-   -or-
-   $ boot2docker ip
-
-   192.168.59.103
-   ```
-
-   Next open that ip address in your browser on port 4200:
-
-   + http://192.168.59.103:4200
-
-### Command Usage for `docker-compose`
-
-The ember, bower, and npm commands can be executed in the container to effect changes to your local project dir as follows.  You basically put a "docker-compose run --rm" in front of any of the 3 commands and pass the normal command options as usual.
-
-Example:
-
-```
-$ docker-compose run --rm npm install
-$ docker-compose run --rm bower install bootstrap
-$ docker-compose run --rm ember generate model user
-```
-
-Note that the `--rm` prevents any changes outside of your project dir (/myapp in the container) from being persisted by docker-compose.  Usually don't care about anything outside of your project dir.
-
-### Command Usage for `docker run`
-
-Basically put `docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:3.8.1` before any command you run.
-
-Example:
-
-```
-$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:3.8.1 npm install
-$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:3.8.1 bower --allow-root install bootstrap
-$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:3.8.1 ember generate model user
-$ docker run --rm -ti -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:3.8.1
-```
-
-Note that the `--rm` prevents a bunch of stopped containers from accumulating from these one-off commands.  They take up space and since pretty much any change made by these commands will only affect what is in your project dir (/myapp in the container), there is no need to keep them around.
-
-Alternatively, you could simply launch into a bash shell and execute the commands in the normal fashion:
-
-```
-$ mkdir new_ember_app
-$ cd new_ember_app
-$ docker run --rm -it -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:3.8.1 bash
-
-root@9ad4805d2b50:/myapp# ember init
-root@9ad4805d2b50:/myapp# ember init --yarn
-root@9ad4805d2b50:/myapp# npm install
-root@9ad4805d2b50:/myapp# bower --allow-root install
-root@9ad4805d2b50:/myapp# ember server
-root@9ad4805d2b50:/myapp# ember test
-root@9ad4805d2b50:/myapp# ember test --server
-```
-
-Note that bash had to be launched with `-p 4200:4200 -p 7020:7020` in order to be able to access the `ember server` on port 4200 and enable Livereload on port 7020.  The `-p 7357:7357` is needed if you intend to run `ember test --server`.
-
-Also note that the `npm install` is done automagically by the `ember init` command on newer versions of ember.  Also, `bower --allow-root install` is not used as much anymore.  There are no bower packages or dependencies in the default project created by `ember init`.  Using the `--yarn` option on `ember init --yarn` will use yarn instead of npm to install dependencies.
-
-Also note that both npm and bower are pretty much being replaced by yarn.  Newer versions of ember-cli have built-in support for yarn on many commands.  Yarn works smoothly in place of npm.  Yarn can also replace your use of bower.  However, even though yarn used to support bower file formats directly, it no longer does.  You should instead use yarn's support for installing front-end web components.
