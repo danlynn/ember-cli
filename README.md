@@ -170,6 +170,54 @@ Also note that the `npm install` is done automagically by the `ember init` comma
 Also note that both npm and bower are pretty much being replaced by yarn.  Newer versions of ember-cli have built-in support for yarn on many commands.  Yarn works smoothly in place of npm.  Yarn can also replace your use of bower.  However, even though yarn used to support bower file formats directly, it no longer does.  You should instead use yarn's support for installing front-end web components.
 
 
+## Troubleshooting
+
++ ### Watchman watch limit error
+
+   While the ember-cli server is running in the docker container, it will detect changes to the ember webapp files. These changes will automagically be detected and the associated files will be recompiled and the browser will auto-reload showing the changes.
+      
+   Note, however, that if you get an error something like:
+      
+   ```
+   ember_1 | Error: A non-recoverable condition has triggered.  Watchman needs your help!
+   ember_1 | The triggering condition was at timestamp=1450119416: inotify-add-watch(/myapp/node_modules/ember-cli/node_modules/bower/node_modules/update-notifier/node_modules/latest-version/node_modules/package-json/node_modules/got/node_modules/duplexify/node_modules/readable-stream/doc) -> The user limit on the total number of inotify watches was reached; increase the fs.inotify.max_user_watches sysctl
+   ember_1 | All requests will continue to fail with this message until you resolve
+   ember_1 | the underlying problem.  You will find more information on fixing this at
+   ember_1 | https://facebook.github.io/watchman/docs/troubleshooting.html#poison-inotify-add-watch
+   ```
+      
+   This means that watchman is running out of resources trying to track all the files in a large ember app.  To increase the `fs.inotify.max_user_watches` count to something that is more appropriate for an ember app, stop your docker-compose server by hitting ctrl-c (or `docker-compose stop server` if necessary) then execute the following command:
+      
+   ```
+   $ docker run --rm --privileged danlynn/ember-cli:3.7.1 sysctl -w fs.inotify.max_user_watches=524288
+   ```
+      
+   Note that this will affect all containers that run on the current docker-machine from this point forward because `fs.inotify.max_user_watches` is a system-wide setting.  This shouldn't be a big deal however, so go ahead and give it a try.  Then start the docker-compose service again with
+   
+   ```
+   $ docker-compose up
+   ```
+
++ ### Ember build system crashing
+
+   Some IDEs (Intelli-J) have features that can wreak havoc with the build system.  If the IDE quickly writes temp files into the project tree then deletes them before or while the Ember build system is processing the changes then the build system can crash.
+   
+   When this happens, you will see something like the following in the build console:
+   
+   ```
+   ember_1  | file deleted templates/application.hbs___jb_old___
+   ember_1  | file deleted templates/application.hbs___jb_tmp___
+   ember_1  | file changed templates/application.hbs
+   ember_1  | Cannot find module 'broccoli/package'
+   ember_1  | 
+   ember_1  | 
+   ember_1  | Stack Trace and Error Report: /tmp/error.dump.644b7ae2dd9e56d5eef7b92b898c1235.log
+   ember_1  | TypeError: Cannot read property 'broccoliNode' of undefined
+   ```
+   
+   The fix is to change your IDE's settings in order to avoid this behavior.  For Intelli-J IDEs, it is the "safe write" feature that causes additional transient files to be generated and quickly deleted upon every save.  This feature can be turned OFF without affecting IDE behavior by going to Settings > Appearance & Behavior > System Settings and then unchecking the 'Use "safe write" (save changes to a temporary file first)' checkbox.  After turning this feature OFF, you can make changes to your files and the ember build system will pick them up and perform builds without further issue.
+
+
 ## Change Log
 
 ### Important Change in ember-cli:3.1.1
