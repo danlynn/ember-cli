@@ -59,6 +59,15 @@ This image contains everything you need to have a working development environmen
 This image was originally based on: [geoffreyd/ember-cli](https://registry.hub.docker.com/u/geoffreyd/ember-cli/) (hat tip)
 
 
+## Example Ember Octane app using docker-compose
+
+  ![ember octane quick start guide tutorial](https://github.com/danlynn/ember-cli-docker-compose-template/blob/gh-pages/ember-cli-octane-demo-anim.gif?raw=true)
+
+  This example runs through the [Quick Start](https://octane-guides-preview.emberjs.com/release/getting-started/quick-start/) ember octane guide tutorial.
+  It follows the Quick Start instructions at [ember-cli-docker-compose-template](https://github.com/danlynn/ember-cli-docker-compose-template) for using the [danlynn/ember-cli](https://hub.docker.com/r/danlynn/ember-cli/) docker image with docker-compose.
+  
+  [Click here](https://danlynn.github.io/ember-cli-docker-compose-template/) to view the video full-size and with playback controls.
+
 ## How to use
 
 The absolutely easiest way to use this ember-cli docker image is to use docker-compose.  I've put together a git repo that contains a stub [ember-cli docker-compose template](https://github.com/danlynn/ember-cli-docker-compose-template) project that makes this a snap!  Full details of the optimized docker-compose environment for developing ember-cli project can be found in that repo's [README](https://github.com/danlynn/ember-cli-docker-compose-template).
