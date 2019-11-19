@@ -1,4 +1,4 @@
-FROM node:10.16.3
+FROM node:12.13.0
 MAINTAINER Dan Lynn <docker@danlynn.org>
 
 # ember server on port 4200
@@ -14,7 +14,7 @@ CMD ["ember", "server"]
 RUN \ 
 	apt-get update -y &&\
 	apt-get install -y python-dev
- 
+
 # install watchman
 # Note: See the README.md to find out how to increase the
 # fs.inotify.max_user_watches value so that watchman will 
@@ -58,4 +58,4 @@ RUN \
 
 # install ember-cli
 RUN \
-	npm install -g ember-cli@3.13.0
+	npm install -g ember-cli@3.14.0
