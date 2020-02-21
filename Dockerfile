@@ -1,4 +1,4 @@
-FROM node:12.16.1
+FROM node:13.8.0
 MAINTAINER Dan Lynn <docker@danlynn.org>
 
 # ember server on port 4200
