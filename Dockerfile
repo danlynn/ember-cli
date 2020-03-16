@@ -58,4 +58,4 @@ RUN \
 
 # install ember-cli
 RUN \
-	npm install -g ember-cli@3.16.0
+	npm install -g ember-cli@3.17.0
