@@ -1,4 +1,4 @@
-FROM node:14.16.1
+FROM node:15.14.0
 MAINTAINER Dan Lynn <docker@danlynn.org>
 
 # ember server on port 4200
@@ -11,7 +11,7 @@ WORKDIR /myapp
 CMD ["ember", "server"]
 
 # Install watchman build dependencies 
-RUN \ 
+RUN \
 	apt-get update -y &&\
 	apt-get install -y python-dev
 
