@@ -1,4 +1,4 @@
-FROM node:14.17.1
+FROM node:16.3.0
 MAINTAINER Dan Lynn <docker@danlynn.org>
 
 # ember server on port 4200
@@ -20,11 +20,10 @@ RUN \
 # fs.inotify.max_user_watches value so that watchman will 
 # work better with ember projects.
 RUN \
-	git clone https://github.com/facebook/watchman.git &&\
+	git clone https://github.com/facebook/watchman.git -b v4.9.0 --depth 1 &&\
 	cd watchman &&\
-	git checkout v4.9.0 &&\
 	./autogen.sh &&\
-	./configure &&\
+	./configure --enable-lenient &&\
 	make &&\
 	make install
 
