@@ -2,7 +2,7 @@
 
 This image contains everything you need to have a working development environment for ember-cli.  The container's working dir is /myapp so that you can setup a volume mapping your project dir to /myapp in the container. ([MIT License](https://github.com/danlynn/ember-cli/blob/master/LICENSE))
 
-![stars](https://img.shields.io/docker/stars/danlynn/ember-cli.svg) ![pulls](https://img.shields.io/docker/pulls/danlynn/ember-cli.svg) ![automated](https://img.shields.io/docker/automated/danlynn/ember-cli.svg) ![automated](https://img.shields.io/docker/build/danlynn/ember-cli.svg) ![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg)
+![stars](https://img.shields.io/docker/stars/danlynn/ember-cli.svg) ![pulls](https://img.shields.io/docker/pulls/danlynn/ember-cli.svg) ![automated](https://img.shields.io/docker/cloud/automated/danlynn/ember-cli.svg) ![status](https://img.shields.io/docker/cloud/build/danlynn/ember-cli.svg) ![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg)
 
 `ember-cli 3.27.0 + node 14.17.1/16.3.0 + npm 6.14.13/7.15.1 + bower 1.8.8 + yarn 1.22.5/1.22.5 + chrome 91.0.4472.114 + watchman 4.9.0`
 
