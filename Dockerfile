@@ -1,4 +1,4 @@
-FROM node:14.17.1
+FROM node:14.17.6
 MAINTAINER Dan Lynn <docker@danlynn.org>
 
 # ember server on port 4200
@@ -20,11 +20,10 @@ RUN \
 # fs.inotify.max_user_watches value so that watchman will 
 # work better with ember projects.
 RUN \
-	git clone https://github.com/facebook/watchman.git &&\
+	git clone --branch=v4.9.0 --depth=1 https://github.com/facebook/watchman.git &&\
 	cd watchman &&\
-	git checkout v4.9.0 &&\
 	./autogen.sh &&\
-	./configure &&\
+	CXXFLAGS=-Wno-error ./configure &&\
 	make &&\
 	make install
 
@@ -58,4 +57,4 @@ RUN \
 
 # install ember-cli
 RUN \
-	npm install -g ember-cli@3.27.0
+	npm install -g ember-cli@3.28.0
