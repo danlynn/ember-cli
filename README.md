@@ -4,6 +4,7 @@ This image contains everything you need to have a working development environmen
 
 ![stars](https://img.shields.io/docker/stars/danlynn/ember-cli.svg) ![pulls](https://img.shields.io/docker/pulls/danlynn/ember-cli.svg) ![automated](https://img.shields.io/docker/cloud/automated/danlynn/ember-cli.svg) ![status](https://img.shields.io/docker/cloud/build/danlynn/ember-cli.svg) ![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg)
 
+
 `ember-cli 3.28.0 + node 14.17.6/16.8.0 + npm 6.14.15/7.21.0 + bower 1.8.8 + yarn 1.22.5/1.22.5 + chrome 93.0.4577.63 + watchman 4.9.0`
 
 
