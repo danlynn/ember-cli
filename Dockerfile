@@ -1,4 +1,4 @@
-FROM node:16.13.2
+FROM node:16.14.0
 MAINTAINER Dan Lynn <docker@danlynn.org>
 
 # ember server on port 4200
@@ -57,4 +57,4 @@ RUN \
 
 # install ember-cli
 RUN \
-	npm install -g ember-cli@4.1.1
+	npm install -g ember-cli@4.2.0
