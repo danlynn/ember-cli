@@ -11,7 +11,7 @@ This image contains everything you need to have a working development environmen
 ### Supported tags and respective `Dockerfile` links
 
 + [`4.11.0`,`4.11.0-node_18.13`,`latest` (4.11.0/Dockerfile)](https://github.com/danlynn/ember-cli/blob/4.11.0/Dockerfile)
-+ [`4.11.0-node_19.4` (4.11.0-node_19.4/Dockerfile)](https://github.com/danlynn/ember-cli/blob/4.11.0-node_19.4/Dockerfile)
++ [`4.11.0-node_19.7` (4.11.0-node_19.7/Dockerfile)](https://github.com/danlynn/ember-cli/blob/4.11.0-node_19.7/Dockerfile)
 + [`4.10.0`,`4.10.0-node_18.13` (4.10.0/Dockerfile)](https://github.com/danlynn/ember-cli/blob/4.10.0/Dockerfile)
 + [`4.10.0-node_19.4` (4.10.0-node_19.4/Dockerfile)](https://github.com/danlynn/ember-cli/blob/4.10.0-node_19.4/Dockerfile)
 + [`4.9.2`,`4.9.2-node_18.12` (4.9.2/Dockerfile)](https://github.com/danlynn/ember-cli/blob/4.9.2/Dockerfile)
