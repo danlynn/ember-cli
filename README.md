@@ -301,6 +301,7 @@ Also note that both npm and bower are pretty much being replaced by yarn.  Newer
    
    The fix is to change your IDE's settings in order to avoid this behavior.  For Intelli-J IDEs, it is the "safe write" feature that causes additional transient files to be generated and quickly deleted upon every save.  This feature can be turned OFF without affecting IDE behavior by going to Settings > Appearance & Behavior > System Settings and then unchecking the 'Use "safe write" (save changes to a temporary file first)' checkbox.  After turning this feature OFF, you can make changes to your files and the ember build system will pick them up and perform builds without further issue.
 
+---
 
 ## Change Log
 
