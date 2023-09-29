@@ -5,12 +5,14 @@ This image contains everything you need to have a working development environmen
 ![stars](https://img.shields.io/docker/stars/danlynn/ember-cli.svg) ![pulls](https://img.shields.io/docker/pulls/danlynn/ember-cli.svg) ![automated](https://img.shields.io/docker/cloud/automated/danlynn/ember-cli.svg) ![status](https://img.shields.io/docker/cloud/build/danlynn/ember-cli.svg) ![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg)
 
 
-`ember-cli 5.2.1 + node 18.17.1/20.5.1 + npm 9.6.7/9.8.0 + bower 1.8.8 + yarn 1.22.19/1.22.19 + chrome 116.0.5845.110 + watchman 4.9.0`
+`ember-cli 5.3.0 + node 18.18.0/20.7.0 + npm 9.8.1/10.1.0 + bower 1.8.8 + yarn 1.22.19/1.22.19 + chrome 117.0.5938.132 + watchman 4.9.0`
 
 
 ### Supported tags and respective `Dockerfile` links
 
-+ [`5.2.1`,`5.2.1-node_18.17`,`latest` (5.2.1/Dockerfile)](https://github.com/danlynn/ember-cli/blob/5.2.1/Dockerfile)
++ [`5.3.0`,`5.3.0-node_18.18`,`latest` (5.3.0/Dockerfile)](https://github.com/danlynn/ember-cli/blob/5.3.0/Dockerfile)
++ [`5.3.0-node_20.7` (5.3.0-node_20.5/Dockerfile)](https://github.com/danlynn/ember-cli/blob/5.3.0-node_20.5/Dockerfile)
++ [`5.2.1`,`5.2.1-node_18.17` (5.2.1/Dockerfile)](https://github.com/danlynn/ember-cli/blob/5.2.1/Dockerfile)
 + [`5.2.1-node_20.5` (5.2.1-node_20.5/Dockerfile)](https://github.com/danlynn/ember-cli/blob/5.2.1-node_20.5/Dockerfile)
 + [`5.1.0`,`5.1.0-node_18.17` (5.1.0/Dockerfile)](https://github.com/danlynn/ember-cli/blob/5.1.0/Dockerfile)
 + [`5.1.0-node_20.5` (5.1.0-node_20.5/Dockerfile)](https://github.com/danlynn/ember-cli/blob/5.1.0-node_20.5/Dockerfile)
@@ -218,15 +220,15 @@ You can ignore docker-compose completely and simply use straight docker commands
 
 ### Command Usage for `docker run`
 
-Basically put `docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:5.2.1` before any command you run.
+Basically put `docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:5.3.0` before any command you run.
 
 Example:
 
 ```
-$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:5.2.1 npm install
-$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:5.2.1 bower --allow-root install bootstrap
-$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:5.2.1 ember generate model user
-$ docker run --rm -ti -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:5.2.1
+$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:5.3.0 npm install
+$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:5.3.0 bower --allow-root install bootstrap
+$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:5.3.0 ember generate model user
+$ docker run --rm -ti -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:5.3.0
 ```
 
 Note that the `--rm` prevents a bunch of stopped containers from accumulating from these one-off commands.  They take up space and since pretty much any change made by these commands will only affect what is in your project dir (/myapp in the container), there is no need to keep them around.
@@ -238,7 +240,7 @@ You could simply launch into a bash shell and execute the commands in the normal
 ```
 $ mkdir new_ember_app
 $ cd new_ember_app
-$ docker run --rm -it -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:5.2.1 bash
+$ docker run --rm -it -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:5.3.0 bash
 
 root@9ad4805d2b50:/myapp# ember init
 root@9ad4805d2b50:/myapp# ember init --yarn
