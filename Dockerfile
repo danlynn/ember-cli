@@ -1,4 +1,4 @@
-FROM node:20.9.0-bullseye
+FROM node:21.2.0-bullseye
 MAINTAINER Dan Lynn <docker@danlynn.org>
 
 # ember server on port 4200
