@@ -1,4 +1,4 @@
-FROM node:20.11.1-bullseye
+FROM node:20.12.2-bullseye
 MAINTAINER Dan Lynn <docker@danlynn.org>
 
 # ember server on port 4200
@@ -57,4 +57,4 @@ RUN \
 
 # install ember-cli
 RUN \
-	npm install -g ember-cli@5.7.0
+	npm install -g ember-cli@5.8.0
