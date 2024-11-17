@@ -1,5 +1,7 @@
-FROM node:20.18.0-bullseye
-MAINTAINER Dan Lynn <docker@danlynn.org>
+FROM node:22.11.0-bullseye
+
+LABEL org.opencontainers.image.authors="Dan Lynn <docker@danlynn.org>"
+LABEL org.opencontainers.image.description="ember-cli development environment"
 
 # ember server on port 4200
 # livereload server on port 7020 (changed in v2.17.0 from 49153)
@@ -57,4 +59,4 @@ RUN \
 
 # install ember-cli
 RUN \
-	npm install -g ember-cli@5.12.0
+	npm install -g ember-cli@6.0.1

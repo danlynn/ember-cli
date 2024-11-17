@@ -5,11 +5,13 @@ This image contains everything you need to have a working development environmen
 ![stars](https://img.shields.io/docker/stars/danlynn/ember-cli.svg) ![pulls](https://img.shields.io/docker/pulls/danlynn/ember-cli.svg) ![automated](https://img.shields.io/docker/automated/danlynn/ember-cli) ![MIT License](https://img.shields.io/github/license/danlynn/ember-cli.svg)
 
 
-`ember-cli 5.12.0 + node 20.18.0/22.9.0 + npm 10.8.2/10.8.3 + bower 1.8.8 + yarn 1.22.22/1.22.22 + chrome 129.0.6668.89 + watchman 4.9.0`
+`ember-cli 6.0.1 + node 22.11.0/23.1.0 + npm 10.9.0/10.9.0 + bower 1.8.8 + yarn 1.22.22/1.22.22 + chrome 131.0.6778.69 + watchman 4.9.0`
 
 ### Supported tags and respective `Dockerfile` links
 
-+ [`5.12.0`,`5.12.0-node_20.18`,`latest` (5.12.0/Dockerfile)](https://github.com/danlynn/ember-cli/blob/5.12.0/Dockerfile)
++ [`6.0.1`,`6.0.1-node_22.11`,`latest` (6.0.1/Dockerfile)](https://github.com/danlynn/ember-cli/blob/6.0.1/Dockerfile)
++ [`6.0.1-node_23.1` (6.0.1-node_23.1/Dockerfile)](https://github.com/danlynn/ember-cli/blob/6.0.1-node_23.1/Dockerfile)
++ [`5.12.0`,`5.12.0-node_20.18` (5.12.0/Dockerfile)](https://github.com/danlynn/ember-cli/blob/5.12.0/Dockerfile)
 + [`5.12.0-node_22.9` (5.12.0-node_22.9/Dockerfile)](https://github.com/danlynn/ember-cli/blob/5.12.0-node_22.9/Dockerfile)
 + [`5.11.0`,`5.11.0-node_20.17` (5.11.0/Dockerfile)](https://github.com/danlynn/ember-cli/blob/5.11.0/Dockerfile)
 + [`5.11.0-node_22.7` (5.11.0-node_22.7/Dockerfile)](https://github.com/danlynn/ember-cli/blob/5.11.0-node_22.7/Dockerfile)
@@ -17,6 +19,10 @@ This image contains everything you need to have a working development environmen
 + [`5.10.0-node_22.4` (5.10.0-node_22.4/Dockerfile)](https://github.com/danlynn/ember-cli/blob/5.10.0-node_22.4/Dockerfile)
 + [`5.9.0`,`5.9.0-node_20.14` (5.9.0/Dockerfile)](https://github.com/danlynn/ember-cli/blob/5.9.0/Dockerfile)
 + [`5.9.0-node_22.2` (5.9.0-node_22.2/Dockerfile)](https://github.com/danlynn/ember-cli/blob/5.9.0-node_22.2/Dockerfile)
+
+<details>
+<summary>Click here to see older versions</summary>
+
 + [`5.8.1`,`5.8.1-node_20.12` (5.8.1/Dockerfile)](https://github.com/danlynn/ember-cli/blob/5.8.1/Dockerfile)
 + [`5.8.1-node_22.1` (5.8.1-node_22.1/Dockerfile)](https://github.com/danlynn/ember-cli/blob/5.8.1-node_22.1/Dockerfile)
 + [`5.8.0`,`5.8.0-node_20.12` (5.8.0/Dockerfile)](https://github.com/danlynn/ember-cli/blob/5.8.0/Dockerfile)
@@ -161,9 +167,9 @@ This image contains everything you need to have a working development environmen
 + [`2.4.3` (2.4.3/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.4.3/Dockerfile)
 + [`2.3.0` (2.3.0/Dockerfile)](https://github.com/danlynn/ember-cli/blob/2.3.0/Dockerfile)
 + [`1.13.15` (1.13.15/Dockerfile)](https://github.com/danlynn/ember-cli/blob/1.13.15/Dockerfile)
+</details>
 
-
-This image was originally based on: [geoffreyd/ember-cli](https://registry.hub.docker.com/u/geoffreyd/ember-cli/) (hat tip)
+This image was originally based on: [geoffreyd/ember-cli](https://hub.docker.com/r/geoffreyd/ember-cli) (hat tip)
 
 
 ## Example Ember Octane app using docker-compose
@@ -172,7 +178,7 @@ This image was originally based on: [geoffreyd/ember-cli](https://registry.hub.d
 
   This example runs through the [Quick Start](https://octane-guides-preview.emberjs.com/release/getting-started/quick-start/) ember octane guide tutorial.
   It follows the Quick Start instructions at [ember-cli-docker-compose-template](https://github.com/danlynn/ember-cli-docker-compose-template) for using the [danlynn/ember-cli](https://hub.docker.com/r/danlynn/ember-cli/) docker image with docker-compose.
-  
+
   [Click here](https://danlynn.github.io/ember-cli-docker-compose-template/) to view the video full-size and with playback controls.
 
 ## How to use
@@ -239,15 +245,15 @@ You can ignore docker-compose completely and simply use straight docker commands
 
 ### Command Usage for `docker run`
 
-Basically put `docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:5.12.0` before any command you run.
+Basically put `docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:6.0.1` before any command you run.
 
 Example:
 
 ```
-$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:5.12.0 npm install
-$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:5.12.0 bower --allow-root install bootstrap
-$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:5.12.0 ember generate model user
-$ docker run --rm -ti -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:5.12.0
+$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:6.0.1 npm install
+$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:6.0.1 bower --allow-root install bootstrap
+$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:6.0.1 ember generate model user
+$ docker run --rm -ti -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:6.0.1
 ```
 
 Note that the `--rm` prevents a bunch of stopped containers from accumulating from these one-off commands.  They take up space and since pretty much any change made by these commands will only affect what is in your project dir (/myapp in the container), there is no need to keep them around.
@@ -259,7 +265,7 @@ You could simply launch into a bash shell and execute the commands in the normal
 ```
 $ mkdir new_ember_app
 $ cd new_ember_app
-$ docker run --rm -it -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:5.12.0 bash
+$ docker run --rm -it -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:6.0.1 bash
 
 root@9ad4805d2b50:/myapp# ember init
 root@9ad4805d2b50:/myapp# ember init --yarn
@@ -282,9 +288,9 @@ Also note that both npm and bower are pretty much being replaced by yarn.  Newer
 + ### Watchman watch limit error
 
    While the ember-cli server is running in the docker container, it will detect changes to the ember webapp files. These changes will automagically be detected and the associated files will be recompiled and the browser will auto-reload showing the changes.
-      
+   
    Note, however, that if you get an error something like:
-      
+   
    ```
    ember_1 | Error: A non-recoverable condition has triggered.  Watchman needs your help!
    ember_1 | The triggering condition was at timestamp=1450119416: inotify-add-watch(/myapp/node_modules/ember-cli/node_modules/bower/node_modules/update-notifier/node_modules/latest-version/node_modules/package-json/node_modules/got/node_modules/duplexify/node_modules/readable-stream/doc) -> The user limit on the total number of inotify watches was reached; increase the fs.inotify.max_user_watches sysctl
@@ -292,13 +298,13 @@ Also note that both npm and bower are pretty much being replaced by yarn.  Newer
    ember_1 | the underlying problem.  You will find more information on fixing this at
    ember_1 | https://facebook.github.io/watchman/docs/troubleshooting.html#poison-inotify-add-watch
    ```
-      
+   
    This means that watchman is running out of resources trying to track all the files in a large ember app.  To increase the `fs.inotify.max_user_watches` count to something that is more appropriate for an ember app, stop your docker-compose server by hitting ctrl-c (or `docker-compose stop server` if necessary) then execute the following command:
-      
+   
    ```
    $ docker run --rm --privileged danlynn/ember-cli:3.7.1 sysctl -w fs.inotify.max_user_watches=524288
    ```
-      
+   
    Note that this will affect all containers that run on the current docker-machine from this point forward because `fs.inotify.max_user_watches` is a system-wide setting.  This shouldn't be a big deal however, so go ahead and give it a try.  Then start the docker-compose service again with
    
    ```
