@@ -1,4 +1,4 @@
-FROM node:22.12.0-bullseye
+FROM node:23.5.0-bullseye
 
 LABEL org.opencontainers.image.authors="Dan Lynn <docker@danlynn.org>"
 LABEL org.opencontainers.image.description="ember-cli development environment"
