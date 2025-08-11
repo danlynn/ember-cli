@@ -5,11 +5,13 @@ This image contains everything you need to have a working development environmen
 ![stars](https://img.shields.io/docker/stars/danlynn/ember-cli.svg) ![pulls](https://img.shields.io/docker/pulls/danlynn/ember-cli.svg) ![automated](https://img.shields.io/docker/automated/danlynn/ember-cli) ![MIT License](https://img.shields.io/github/license/danlynn/ember-cli.svg)
 
 
-`ember-cli 6.5.0 + node 22.16.0/24.2.0 + npm 10.9.2/11.3.0 + bower 1.8.8 + yarn 1.22.22/1.22.22 + chrome 137.0.7151.119 + watchman 4.9.0`
+`ember-cli 6.6.0 + node 22.18.0/24.5.0 + npm 10.9.3/11.5.1 + bower 1.8.8 + yarn 1.22.22/1.22.22 + chrome 139.0.7258.66 + watchman 4.9.0`
 
 ### Supported tags and respective `Dockerfile` links
 
-+ [`6.5.0`,`6.5.0-node_22.16`,`latest` (6.5.0/Dockerfile)](https://github.com/danlynn/ember-cli/blob/6.5.0/Dockerfile)
++ [`6.6.0`,`6.6.0-node_22.18`,`latest` (6.6.0/Dockerfile)](https://github.com/danlynn/ember-cli/blob/6.6.0/Dockerfile)
++ [`6.6.0-node_24.5` (6.6.0-node_24.5/Dockerfile)](https://github.com/danlynn/ember-cli/blob/6.6.0-node_24.5/Dockerfile)
++ [`6.5.0`,`6.5.0-node_22.16` (6.5.0/Dockerfile)](https://github.com/danlynn/ember-cli/blob/6.5.0/Dockerfile)
 + [`6.5.0-node_24.2` (6.5.0-node_24.2/Dockerfile)](https://github.com/danlynn/ember-cli/blob/6.5.0-node_24.2/Dockerfile)
 + [`6.4.0`,`6.4.0-node_22.15` (6.4.0/Dockerfile)](https://github.com/danlynn/ember-cli/blob/6.4.0/Dockerfile)
 + [`6.4.0-node_23.11` (6.4.0-node_23.11/Dockerfile)](https://github.com/danlynn/ember-cli/blob/6.4.0-node_23.11/Dockerfile)
