@@ -5,10 +5,12 @@ This image contains everything you need to have a working development environmen
 ![stars](https://img.shields.io/docker/stars/danlynn/ember-cli.svg) ![pulls](https://img.shields.io/docker/pulls/danlynn/ember-cli.svg) ![automated](https://img.shields.io/docker/automated/danlynn/ember-cli) ![MIT License](https://img.shields.io/github/license/danlynn/ember-cli.svg)
 
 
-`ember-cli 6.7.2 + node 22.19.0/24.8.0 + npm 10.9.3/11.6.0 + bower 1.8.8 + yarn 1.22.22/1.22.22 + chrome 142.0.7444.162 + watchman 4.9.0`
+`ember-cli 6.8.0 + node 24.11.0/25.2.1 + npm 11.6.1/11.6.2 + bower 1.8.8 + yarn 1.22.22/1.22.22 + chrome 144.0.7559.109 + watchman 4.9.0`
 
 ### Supported tags and respective `Dockerfile` links
 
++ [`6.8.0`,`6.8.0-node_24.11`,`latest` (6.8.0/Dockerfile)](https://github.com/danlynn/ember-cli/blob/6.8.0/Dockerfile)
++ [`6.8.0-node_25.2` (6.8.0-node_25.2/Dockerfile)](https://github.com/danlynn/ember-cli/blob/6.8.0-node_25.2/Dockerfile)
 + [`6.7.2`,`6.7.2-node_22.19`,`latest` (6.7.2/Dockerfile)](https://github.com/danlynn/ember-cli/blob/6.7.2/Dockerfile)
 + [`6.7.2-node_24.8` (6.7.2-node_24.5/Dockerfile)](https://github.com/danlynn/ember-cli/blob/6.7.2-node_24.8/Dockerfile)
 + [`6.7.0`,`6.7.0-node_22.19` (6.7.0/Dockerfile)](https://github.com/danlynn/ember-cli/blob/6.7.0/Dockerfile)
@@ -203,6 +205,10 @@ This image was originally based on: [geoffreyd/ember-cli](https://hub.docker.com
 
   [Click here](https://danlynn.github.io/ember-cli-docker-compose-template/) to view the video full-size and with playback controls.
 
+## Change to launching ember-cli server in 6.8.0+
+
+The regular `ember server` command has been replaced with `npm start -- --host 0.0.0.0` in ember-cli 6.8.0.  Therefore, you will need to update your usage and launch scripts to use the new npm start command.
+
 ## How to use
 
 The absolutely easiest way to use this ember-cli docker image is to use docker-compose.  I've put together a git repo that contains a stub [ember-cli docker-compose template](https://github.com/danlynn/ember-cli-docker-compose-template) project that makes this a snap!  Full details of the optimized docker-compose environment for developing ember-cli project can be found in that repo's [README](https://github.com/danlynn/ember-cli-docker-compose-template).
@@ -255,6 +261,8 @@ $ ./serve
 
 Replace the "ember-project" at the beginning with the name to use for the new project dir.  This first line will create a new directory named "ember-project" populated with the contents of the ember-cli-docker-compose-template repo from github then cd into that directory ready to use.  The last 2 lines are common commands that use the 'shortcuts' to run the ember command in the container and then start the ember server.
 
+Note that as of ember-cli 6.8.0, you will need to update the ./serve docker helper command to use the new `npm start -- --host 0.0.0.0` command.
+
 
 ### Slightly more detailed instructions:
 
@@ -267,15 +275,15 @@ You can ignore docker-compose completely and simply use straight docker commands
 
 ### Command Usage for `docker run`
 
-Basically put `docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:6.7.2` before any command you run.
+Basically put `docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:6.8.0` before any command you run.
 
 Example:
 
 ```
-$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:6.7.2 npm install
-$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:6.7.2 bower --allow-root install bootstrap
-$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:6.7.2 ember generate model user
-$ docker run --rm -ti -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:6.7.2
+$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:6.8.0 npm install
+$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:6.8.0 bower --allow-root install bootstrap
+$ docker run --rm -ti -v $(pwd):/myapp danlynn/ember-cli:6.8.0 ember generate model user
+$ docker run --rm -ti -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:6.8.0
 ```
 
 Note that the `--rm` prevents a bunch of stopped containers from accumulating from these one-off commands.  They take up space and since pretty much any change made by these commands will only affect what is in your project dir (/myapp in the container), there is no need to keep them around.
@@ -287,18 +295,17 @@ You could simply launch into a bash shell and execute the commands in the normal
 ```
 $ mkdir new_ember_app
 $ cd new_ember_app
-$ docker run --rm -it -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:6.7.2 bash
+$ docker run --rm -it -v $(pwd):/myapp -p 4200:4200 -p 7020:7020 -p 7357:7357 danlynn/ember-cli:6.8.0 bash
 
 root@9ad4805d2b50:/myapp# ember init
 root@9ad4805d2b50:/myapp# ember init --yarn
 root@9ad4805d2b50:/myapp# npm install
 root@9ad4805d2b50:/myapp# bower --allow-root install
-root@9ad4805d2b50:/myapp# ember server
 root@9ad4805d2b50:/myapp# ember test
-root@9ad4805d2b50:/myapp# ember test --server
+root@9ad4805d2b50:/myapp# npm start -- --host 0.0.0.0
 ```
 
-Note that bash had to be launched with `-p 4200:4200 -p 7020:7020` in order to be able to access the `ember server` on port 4200 and enable Livereload on port 7020.  The `-p 7357:7357` is needed if you intend to run `ember test --server`.
+Note that bash had to be launched with `-p 4200:4200 -p 7020:7020` in order to be able to access the `ember server` on port 4200 and enable Livereload on port 7020.  Note that ember-clil 6.8.0+ uses Vite HMR instead of LiveReload and does not require any ports in addition to the 4200 port to be exposed.
 
 Also note that the `npm install` is done automagically by the `ember init` command on newer versions of ember.  Also, `bower --allow-root install` is not used as much anymore.  There are no bower packages or dependencies in the default project created by `ember init`.  Using the `--yarn` option on `ember init --yarn` will use yarn instead of npm to install dependencies.
 
