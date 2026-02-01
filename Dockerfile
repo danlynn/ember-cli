@@ -1,4 +1,4 @@
-FROM node:24.11.0-bullseye
+FROM node:24.13.0-bullseye
 
 LABEL org.opencontainers.image.authors="Dan Lynn <docker@danlynn.org>"
 LABEL org.opencontainers.image.description="ember-cli development environment"
@@ -59,4 +59,4 @@ RUN \
 
 # install ember-cli
 RUN \
-	npm install -g ember-cli@6.8.0
+	npm install -g ember-cli@6.10.0
