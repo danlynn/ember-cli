@@ -10,7 +10,7 @@ This image contains everything you need to have a working development environmen
 ### Supported tags and respective `Dockerfile` links
 
 + [`6.10.0`,`6.10.0-node_24.13`,`latest` (6.10.0/Dockerfile)](https://github.com/danlynn/ember-cli/blob/6.10.0/Dockerfile)
-+ [`6.10.0-node_25.2` (6.10.0-node_25.2/Dockerfile)](https://github.com/danlynn/ember-cli/blob/6.10.0-node_25.2/Dockerfile)
++ [`6.10.0-node_25.5` (6.10.0-node_25.5/Dockerfile)](https://github.com/danlynn/ember-cli/blob/6.10.0-node_25.5/Dockerfile)
 + [`6.8.0`,`6.8.0-node_24.11` (6.8.0/Dockerfile)](https://github.com/danlynn/ember-cli/blob/6.8.0/Dockerfile)
 + [`6.8.0-node_25.2` (6.8.0-node_25.2/Dockerfile)](https://github.com/danlynn/ember-cli/blob/6.8.0-node_25.2/Dockerfile)
 + [`6.7.2`,`6.7.2-node_22.19` (6.7.2/Dockerfile)](https://github.com/danlynn/ember-cli/blob/6.7.2/Dockerfile)
